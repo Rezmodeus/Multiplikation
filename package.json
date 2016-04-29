@@ -1,0 +1,51 @@
+{
+  "name": "multiplikation",
+  "version": "1.0.0",
+  "description": "Learn multiplication",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint src",
+    "test": "./node_modules/mocha/bin/_mocha test/**/*-spec.js --compilers js:babel-register -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rezmodeus/Multiplikation.git"
+  },
+  "author": "Rezmodeus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rezmodeus/Multiplikation/issues"
+  },
+  "homepage": "https://github.com/Rezmodeus/Multiplikation#readme"
+  "devDependencies": {
+    "babel-core": "^6.0.20",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-react": "^6.0.15",
+    "babel-preset-stage-0": "^6.0.15",
+    "babel-register": "^6.7.2",
+    "css-loader": "^0.23.1",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.6.2",
+    "expect": "^1.18.0",
+    "immutable": "^3.8.1",
+    "less": "^2.6.1",
+    "less-loader": "^2.2.3",
+    "mocha": "^2.4.5",
+    "react-bootstrap": "^0.29.2",
+    "react-hot-loader": "^1.3.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.0.1",
+    "should": "^8.3.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
+  }
+}
