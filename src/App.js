@@ -1,18 +1,18 @@
 import React from 'react';
 import Start from './App/components/Start.react';
 import Game from './App/components/Game.react';
+import Actions from './App/Actions';
 import { connect } from 'react-redux';
 require('./less/main.less');
+
 const App = React.createClass({
 	render() {
-		console.log(this.props)
 		return (
-			<div>
-				<h1>Hello, world.</h1>
+			<div className="challenge-container">
 				{this.props.gameState == 'start' ?
-					<Start tiers={this.props.tiers}/>
+					<Start {...this.props}/>
 					:
-					<Game a={this.props.a}/>
+					<Game {...this.props}/>
 				}
 			</div>
 
@@ -24,12 +24,17 @@ const mapStateToProps = (state) => {
 	return {
 		a: state.get('a'),
 		gameState: state.get('gameState'),
-		tiers: state.get('tiers')
+		currentChallenge: state.get('currentChallenge'),
+		challenges: state.get('challenges'),
+		level: state.get('level')
 	}
 };
 
 const mapDispatchToProps = (dispatch) => {
-	return {}
+	return {
+		startChallenge:(challenge)=>dispatch(Actions.startChallenge(challenge)),
+		backToStart:(challenge)=>dispatch(Actions.backToStart(challenge))
+	}
 };
 export default connect(
 	mapStateToProps,
