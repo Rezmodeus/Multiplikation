@@ -3,7 +3,23 @@ import expect from 'expect';
 import INITIAL_STATE from '../src/App/INITIAL_STATE'
 import ReducerLib from '../src/App/ReducerLib'
 
-describe('ReducerLib:getGridFilter', ()=> {
+describe('ReducerLib:getisDisabled', ()=> {
+	it('should get correct on matches', ()=> {
+		expect(ReducerLib.isEnabled([1], 1)).toBe(true);
+		expect(ReducerLib.isEnabled([1], 10)).toBe(true);
+		expect(ReducerLib.isEnabled([1], 11)).toBe(false);
+
+		expect(ReducerLib.isEnabled([3], 2)).toBe(false);
+		expect(ReducerLib.isEnabled([3], 3)).toBe(true);
+
+		expect(ReducerLib.isEnabled([2, 3], 21)).toBe(true);
+		expect(ReducerLib.isEnabled([2, 3], 27)).toBe(true);
+		expect(ReducerLib.isEnabled([2, 3], 22)).toBe(false);
+		expect(ReducerLib.isEnabled([2, 3], 31)).toBe(false);
+	});
+});
+
+describe('ReducerLib:getProblemsNumeric', ()=> {
 
 	let state;
 
@@ -11,22 +27,10 @@ describe('ReducerLib:getGridFilter', ()=> {
 		state = INITIAL_STATE;
 	});
 
-	it('should have default size of 100', ()=> {
-		const gridFilter = ReducerLib.getGridFilter([1]);
-		expect(gridFilter.length).toBe(100);
-	});
-
-	it('should filter out correctly when using 1 table', ()=> {
-		let gridFilter = ReducerLib.getGridFilter([1]);
-		expect(gridFilter.reduce((sum, current)=>current ? sum + 1 : sum, 0)).toBe(10);
-
-		gridFilter = ReducerLib.getGridFilter([5]);
-		expect(gridFilter.reduce((sum, current)=>current ? sum + 1 : sum, 0)).toBe(10);
-	});
-
-	it('should filter out correctly when using 1 table', ()=> {
-		const gridFilter = ReducerLib.getGridFilter([1, 2]);
-		expect(gridFilter.reduce((sum, current)=>current ? sum + 1 : sum, 0)).toBe(10 + 5);
+	it('should get problems data correctly', ()=> {
+		const problems = ReducerLib.getProblemsNumeric([1]);
+		expect(problems[0]).toBe('1*1');
+		expect(problems[9]).toBe('1*10');
 	});
 
 });
@@ -59,9 +63,21 @@ describe('ReducerLib:getGameData', ()=> {
 		state = INITIAL_STATE;
 	});
 
-	it('should get level data correctly', ()=> {
-		const level = ReducerLib.getLevelData('level1',[1]);
-		expect(level.gridValues.length).toBe(level.gridToggles.length);
+	it('should get level1 data correctly', ()=> {
+		let level = ReducerLib.getLevelData('level1', [1]);
+		expect(level.problems.length).toBe(10);
+		expect(level.problems[0]).toBe('1*1');
+		expect(level.problems[9]).toBe('1*10');
+		expect(level.grid[0].enabled).toBe(true);
+		expect(level.grid[9].enabled).toBe(true);
+		expect(level.grid[10].enabled).toBe(false);
+
+		level = ReducerLib.getLevelData('level1', [1, 2]);
+		expect(level.problems.length).toBe(20);
+		expect(level.problems[0]).toBe('1*1');
+		expect(level.problems[19]).toBe('2*10');
+		expect(level.grid[10].enabled).toBe(false);
+		expect(level.grid[11].enabled).toBe(true);
 	});
 
 });

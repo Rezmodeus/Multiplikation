@@ -7,8 +7,12 @@ export default React.createClass({
 
 	render() {
 		return (
-			<Grid100 gridToggles={this.props.gridToggles} gridValues={this.props.gridValues} />
+			<div>
+				<h1>{this.props.currentProblem}={this.props.currentAnswer}</h1>
+				<Grid100 level={this.props.level} />
+			</div>
 		)
 	}
 });
 
+//<Grid100 gridToggles={this.props.gridToggles} gridValues={this.props.gridValues}/>

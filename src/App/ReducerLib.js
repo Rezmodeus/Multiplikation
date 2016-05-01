@@ -1,33 +1,45 @@
 export default {
 
-	getGridValues(){
-		let a = [];
-		for(let i = 1;i<=100;i++){
-			a.push(i);
-		}
-		return a;
-	},
-	getGridFilter(tables, gridSize = 101){
-		const a = Array(gridSize).fill(false);
-		let mapped = a.map((val, index) => tables.some(t => index % t == 0 && index <= t * 10));
-		mapped.shift();
-		return mapped;
+	isEnabled(tables, value){
+		return tables.some(t => value % t == 0 && value <= t * 10)
 	},
 
-	checkAnswer(calcStr, answer){
-		const a = calcStr.split('*');
+	getProblemsNumeric(tables){
+		return tables.reduce((arr, table) => arr.concat(Array(10).fill(0).map((dummy, index) => table + '*' + (index + 1))), []);
+	},
+
+	checkAnswer(problem, answer){
+		const a = problem.split('*');
 		return parseInt(a[0]) * parseInt(a[1]) == answer;
 	},
 
-	getLevelData(gameLevel,tables){
-		let level ={
-			currentProblem:'',
-			currentAnswer:''
+	getLevelData(gameLevel, tables){
+		let level = {
+			problemNr: 0,
+			currentProblem: '',
+			currentAnswer: '',
+			grid: Array(100).fill({}),
+			problems: []
 		};
-		switch(gameLevel){
+		switch (gameLevel) {
 			case 'level1':
-				level.gridValues = this.getGridValues();
-				level.gridToggles = this.getGridFilter(tables);
+				level.grid = Array(100).fill({}).map((obj, index) => {
+					return {
+						value: index + 1,
+						enabled: this.isEnabled(tables, index + 1)
+					}
+				});
+				level.problems = this.getProblemsNumeric(tables);
+				break;
+
+			case 'level2':
+				level.grid = Array(100).fill({}).map((obj, index) => {
+					return {
+						value: index + 1,
+						enabled: true
+					}
+				});
+				level.problems = this.getProblemsNumeric(tables);
 				break;
 		}
 		return level;

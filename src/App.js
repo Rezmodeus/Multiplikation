@@ -32,8 +32,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		startChallenge:(challenge)=>dispatch(Actions.startChallenge(challenge)),
-		backToStart:(challenge)=>dispatch(Actions.backToStart(challenge))
+		startChallenge: (challenge)=>dispatch(Actions.startChallenge(challenge)),
+		backToStart: (challenge)=>dispatch(Actions.backToStart(challenge)),
+		checkAnswer: (problem, answer) => dispatch(Actions.checkAnswer(problem, answer))
 	}
 };
 export default connect(

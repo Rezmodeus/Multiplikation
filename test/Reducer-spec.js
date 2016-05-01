@@ -9,13 +9,13 @@ describe('Reducer', ()=> {
 
 	beforeEach(()=> {
 		state = INITIAL_STATE;
-		action = {type:'START_CHALLENGE', challenge:'c1_1'}
+		action = {type: 'START_CHALLENGE', challenge: 'c1_1'}
 	});
 
 	it('shuld set level data', ()=> {
 		expect(state.get('level').size).toBe(0);
-		state = Reducer(state,action);
-		expect(state.get('level').size>0).toBe(true);
+		state = Reducer(state, action);
+		expect(state.get('level').size > 0).toBe(true);
 		expect(state.get('currentChallenge')).toBe(action.challenge);
 		expect(state.get('gameState')).toBe('game');
 	});
