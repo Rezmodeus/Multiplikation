@@ -1,18 +1,37 @@
 body {
+  background-color: antiquewhite;
 }
+
 .btn {
   &:after {
   }
 }
 
-.h2{
+.h2 {
 }
+
 .form-control {
   width: 50%;
 
 }
+
 .challenge-container {
   display: flex;
   flex-direction: column;
   flex-flow: nowrap;
 }
+
+.answer-result {
+  z-index: 10;
+  color: #009999;
+  font-size: 100px;
+  opacity: 1;
+  &.remove {
+    color: #f00;
+  }
+  &.ok {
+    transition: opacity 2s ease-out;
+    opacity: 0;
+  }
+}
+

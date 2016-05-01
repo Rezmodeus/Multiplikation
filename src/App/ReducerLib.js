@@ -16,11 +16,11 @@ export default {
 	getLevelData(gameLevel, tables){
 		let level = {
 			problemNr: 0,
-			currentProblem: 0,
+			currentStep: 0,
 			currentAnswer: '',
-			grid: Array(100).fill({}),
 			problems: [],
-			score: 0
+			score: 0,
+			ok:''
 		};
 		switch (gameLevel) {
 			case 'level1':

@@ -1,22 +1,35 @@
 import React from 'react';
 import immutable from 'immutable';
-import {Button} from 'react-bootstrap';
+import {Button, Glyphicon} from 'react-bootstrap';
 import Grid100 from './Grid100.react';
+import AnswerResult from './AnswerResult.react';
 
 export default React.createClass({
+	componentDidUpdate() {
+		requestAnimationFrame(() => {
+			console.log('lll');
+		});
+	},
 
 	checkAnswer(answer){
-		this.props.checkAnswer(this.props.level.getIn(['problems',this.props.level.get('currentProblem')]), answer);
+		this.props.checkAnswer(this.props.level.getIn(['problems', this.props.level.get('currentStep')]), answer);
 	},
 
 	render() {
-		const currentProblem = this.props.level.get('currentProblem');
+		const currentStep = this.props.level.get('currentStep');
 		const problems = this.props.level.get('problems');
-		const problem = problems.get(currentProblem);
+		const problem = problems.get(currentStep);
+		const currentAnswer = this.props.level.get('currentAnswer');
+		const ok = this.props.level.get('ok');
+		const cls = currentAnswer != '' ? 'wrong-answer' : '';
 		return (
 			<div>
-				<h1>{problem}={this.props.level.get('currentAnswer')}</h1>
-				<Grid100 level={this.props.level} checkAnswer={this.checkAnswer} />
+				<h1>
+					<span>{problem}= </span>
+					<span className={cls}> {this.props.level.get('currentAnswer')}</span>
+				</h1>
+				<AnswerResult ok={ok}/>
+				<Grid100 level={this.props.level} checkAnswer={this.checkAnswer}/>
 			</div>
 		)
 	}

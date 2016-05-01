@@ -6,7 +6,7 @@ export default immutable.fromJS({
 	challenges: {
 		c1_1: {
 			name: 'Nivå 1',
-			leveType: 'level1',
+			levelType: 'level1',
 			tables: [1],
 			unlocked: true,
 			unlocks: ['c1_2', 'c2_1']
@@ -14,7 +14,7 @@ export default immutable.fromJS({
 
 		c1_2: {
 			name: 'Nivå 2',
-			leveType: 'level2',
+			levelType: 'level2',
 			tables: [1],
 			unlocked: false,
 			unlocks: []
@@ -22,7 +22,7 @@ export default immutable.fromJS({
 
 		c2_1: {
 			name: 'Nivå 1',
-			leveType: 'level1',
+			levelType: 'level1',
 			tables: [2],
 			unlocked: false,
 			unlocks: ['c2_2']
@@ -30,7 +30,7 @@ export default immutable.fromJS({
 
 		c2_2: {
 			name: 'Nivå 2',
-			leveType: 'level2',
+			levelType: 'level2',
 			tables: [2],
 			unlocked: false,
 			unlocks: []

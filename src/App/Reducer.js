@@ -6,7 +6,7 @@ export default function (state, action) {
 			const {challenge} = action;
 			const ch = state.getIn(['challenges', challenge]);
 			const tables = ch.get('tables').toJS();
-			const data = ReducerLib.getLevelData(ch.get('leveType'), tables);
+			const data = ReducerLib.getLevelData(ch.get('levelType'), tables);
 			state = state.set('currentChallenge', challenge);
 			state = state.set('gameState', 'game');
 			state = state.set('level', immutable.fromJS(data));
@@ -17,9 +17,23 @@ export default function (state, action) {
 			return state;
 
 		case 'CHECK_ANSWER':
-			const answerOk = ReducerLib.checkAnswer(action.problem,action.answer);
-			console.log('ok',answerOk);
-			state = state.setIn(['level','currentAnswer'],action.answer);
+			const answerOk = ReducerLib.checkAnswer(action.problem, action.answer);
+			state = state.setIn(['level', 'ok'], answerOk ? 'ok' : 'remove');
+			const currentChallenge = state.get('currentChallenge')
+			const currentLevelType = state.getIn(['challenges', currentChallenge, 'levelType']);
+			switch (currentLevelType) {
+				case 'level1':
+					if (answerOk) {
+						state = state.setIn(['level', 'grid', state.getIn(['level', 'currentStep']), 'enabled'], false);
+					}
+					break;
+
+			}
+			if (answerOk) {
+				state = state.updateIn(['level', 'currentStep'], n => n + 1);
+			} else {
+				state = state.setIn(['level', 'currentAnswer'], action.answer);
+			}
 			return state;
 
 		default:
