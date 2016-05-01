@@ -22,7 +22,7 @@ const App = React.createClass({
 
 const mapStateToProps = (state) => {
 	return {
-		a: state.get('a'),
+		nr: state.get('nr'),
 		gameState: state.get('gameState'),
 		currentChallenge: state.get('currentChallenge'),
 		challenges: state.get('challenges'),

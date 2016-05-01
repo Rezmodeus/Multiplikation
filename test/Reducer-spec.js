@@ -80,5 +80,5 @@ describe('Reducer:CHECK_ANSWER', ()=> {
 		expect(state.getIn(['level', 'grid', 0, 'enabled'])).toBe(true);
 	});
 
-
 });
+

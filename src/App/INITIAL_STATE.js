@@ -1,6 +1,6 @@
 import immutable from 'immutable';
 export default immutable.fromJS({
-	a: 0,
+	nr: 0,
 	gameState: 'start',
 	currentChallenge: '',
 	challenges: {
@@ -16,7 +16,7 @@ export default immutable.fromJS({
 			name: 'Nivå 2',
 			levelType: 'level2',
 			tables: [1],
-			unlocked: false,
+			unlocked: true,
 			unlocks: []
 		},
 

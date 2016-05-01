@@ -5,11 +5,6 @@ import Grid100 from './Grid100.react';
 import AnswerResult from './AnswerResult.react';
 
 export default React.createClass({
-	componentDidUpdate() {
-		requestAnimationFrame(() => {
-			console.log('lll');
-		});
-	},
 
 	checkAnswer(answer){
 		this.props.checkAnswer(this.props.level.getIn(['problems', this.props.level.get('currentStep')]), answer);
@@ -28,11 +23,10 @@ export default React.createClass({
 					<span>{problem}= </span>
 					<span className={cls}> {this.props.level.get('currentAnswer')}</span>
 				</h1>
-				<AnswerResult ok={ok}/>
+				<AnswerResult ok={ok} nr={this.props.nr}/>
 				<Grid100 level={this.props.level} checkAnswer={this.checkAnswer}/>
 			</div>
 		)
 	}
 });
 
-//<Grid100 gridToggles={this.props.gridToggles} gridValues={this.props.gridValues}/>

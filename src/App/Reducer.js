@@ -17,6 +17,7 @@ export default function (state, action) {
 			return state;
 
 		case 'CHECK_ANSWER':
+			state = state.update('nr', nr => nr + 1);
 			const answerOk = ReducerLib.checkAnswer(action.problem, action.answer);
 			state = state.setIn(['level', 'ok'], answerOk ? 'ok' : 'remove');
 			const currentChallenge = state.get('currentChallenge')
@@ -24,10 +25,15 @@ export default function (state, action) {
 			switch (currentLevelType) {
 				case 'level1':
 					if (answerOk) {
-						state = state.setIn(['level', 'grid', state.getIn(['level', 'currentStep']), 'enabled'], false);
+						state = state.setIn(['level', 'grid', action.answer-1, 'enabled'], false);
 					}
 					break;
 
+				case 'level2':
+					if (answerOk) {
+						state = state.setIn(['level', 'grid', action.answer-1, 'enabled'], false);
+					}
+					break;
 			}
 			if (answerOk) {
 				state = state.updateIn(['level', 'currentStep'], n => n + 1);
