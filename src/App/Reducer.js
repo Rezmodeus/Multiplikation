@@ -19,6 +19,7 @@ export default function (state, action) {
 		case 'CHECK_ANSWER':
 			const answerOk = ReducerLib.checkAnswer(action.problem,action.answer);
 			console.log('ok',answerOk);
+			state = state.setIn(['level','currentAnswer'],action.answer);
 			return state;
 
 		default:

@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/App/components/Level1.react.js" line="10" mnemonic="9" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdfbe905-5e01-4a95-8454-bcedb20518c0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App/Actions.js" afterPath="$PROJECT_DIR$/src/App/Actions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App/INITIAL_STATE.js" afterPath="$PROJECT_DIR$/src/App/INITIAL_STATE.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App/Reducer.js" afterPath="$PROJECT_DIR$/src/App/Reducer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App/ReducerLib.js" afterPath="$PROJECT_DIR$/src/App/ReducerLib.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App/components/Game.react.js" afterPath="$PROJECT_DIR$/src/App/components/Game.react.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App/components/Grid100.react.js" afterPath="$PROJECT_DIR$/src/App/components/Grid100.react.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App/components/Level1.react.js" afterPath="$PROJECT_DIR$/src/App/components/Level1.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/Reducer-spec.js" afterPath="$PROJECT_DIR$/test/Reducer-spec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ReducerLib-spec.js" afterPath="$PROJECT_DIR$/test/ReducerLib-spec.js" />
     </list>
     <ignored path="Multiplikation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,6 +26,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Game.react.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App/components/Game.react.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Reducer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App/Reducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReducerLib.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/App/ReducerLib.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.33199194">
+              <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="INITIAL_STATE.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App/INITIAL_STATE.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -45,41 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Actions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App/Actions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.react.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/App/components/Game.react.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4527163">
-              <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Level1.react.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App/components/Level1.react.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
+              <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -89,47 +80,7 @@
         <entry file="file://$PROJECT_DIR$/src/App/components/Grid100.react.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReducerLib.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App/ReducerLib.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Reducer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App/Reducer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReducerLib-spec.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/ReducerLib-spec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Reducer-spec.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/Reducer-spec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+              <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -162,16 +113,16 @@
         <option value="$PROJECT_DIR$/.babelrc" />
         <option value="$PROJECT_DIR$/src/App/components/Start.react.js" />
         <option value="$PROJECT_DIR$/src/less/main.less" />
-        <option value="$PROJECT_DIR$/src/App/components/Level1.react.js" />
         <option value="$PROJECT_DIR$/src/App/components/Game.react.js" />
         <option value="$PROJECT_DIR$/src/App/INITIAL_STATE.js" />
         <option value="$PROJECT_DIR$/test/ReducerLib-spec.js" />
         <option value="$PROJECT_DIR$/test/Reducer-spec.js" />
-        <option value="$PROJECT_DIR$/src/App/components/Grid100.react.js" />
-        <option value="$PROJECT_DIR$/src/App/ReducerLib.js" />
-        <option value="$PROJECT_DIR$/src/App/Reducer.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/App/Actions.js" />
+        <option value="$PROJECT_DIR$/src/App/components/Grid100.react.js" />
+        <option value="$PROJECT_DIR$/src/App/components/Level1.react.js" />
+        <option value="$PROJECT_DIR$/src/App/Reducer.js" />
+        <option value="$PROJECT_DIR$/src/App/ReducerLib.js" />
       </list>
     </option>
   </component>
@@ -362,7 +313,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="list.type.of.created.stylesheet" value="Less" />
-    <property name="SearchEverywhereHistoryKey" value="app&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App.js&#10;Reducer&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/Reducer.js&#10;act&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/Actions.js&#10;gr&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/components/Grid100.react.js&#10;redu&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/test/ReducerLib-spec.js&#10;reducerlib&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/ReducerLib.js&#10;main&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/less/main.less&#10;actions&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/Actions.js&#10;grid&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/components/Grid100.react.js&#10;pack&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/package.json" />
+    <property name="SearchEverywhereHistoryKey" value="level1&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/components/Level1.react.js&#10;reducerl&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/ReducerLib.js&#10;app&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App.js&#10;Reducer&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/Reducer.js&#10;act&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/Actions.js&#10;gr&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/components/Grid100.react.js&#10;redu&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/test/ReducerLib-spec.js&#10;reducerlib&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/ReducerLib.js&#10;main&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/less/main.less&#10;actions&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/Actions.js&#10;grid&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/src/App/components/Grid100.react.js&#10;pack&#9;FILE&#9;file:///Users/anderscorlin/Multiplikation/package.json" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -456,7 +407,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -540,14 +493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/INITIAL_STATE.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/Reducer-spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -560,38 +505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/components/Level1.react.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/components/Grid100.react.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/ReducerLib.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/Reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -612,10 +525,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/components/Grid100.react.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/INITIAL_STATE.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/App/components/Game.react.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4527163">
-          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/components/Level1.react.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/Reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/ReducerLib.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33199194">
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
           <folding />
         </state>
       </provider>
