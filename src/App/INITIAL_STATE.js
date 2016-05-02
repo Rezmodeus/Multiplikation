@@ -9,12 +9,28 @@ export default immutable.fromJS({
 			levelType: 'level1',
 			tables: [1],
 			unlocked: true,
-			unlocks: ['c1_2', 'c2_1']
+			unlocks: ['c1_2']
 		},
 
 		c1_2: {
 			name: 'Nivå 2',
 			levelType: 'level2',
+			tables: [1],
+			unlocked: true,
+			unlocks: []
+		},
+
+		c1_3: {
+			name: 'Nivå 3',
+			levelType: 'level3',
+			tables: [1],
+			unlocked: true,
+			unlocks: []
+		},
+
+		c1_4: {
+			name: 'Nivå 4',
+			levelType: 'level4',
 			tables: [1],
 			unlocked: true,
 			unlocks: []

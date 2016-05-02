@@ -24,19 +24,13 @@ export default function (state, action) {
 			const currentLevelType = state.getIn(['challenges', currentChallenge, 'levelType']);
 			switch (currentLevelType) {
 				case 'level1':
-					if (answerOk) {
-						state = state.setIn(['level', 'grid', action.answer-1, 'enabled'], false);
-					}
 					break;
-
 				case 'level2':
-					if (answerOk) {
-						state = state.setIn(['level', 'grid', action.answer-1, 'enabled'], false);
-					}
 					break;
 			}
 			if (answerOk) {
 				state = state.updateIn(['level', 'currentStep'], n => n + 1);
+				state = state.setIn(['level', 'grid', action.answer-1, 'enabled'], false);
 			} else {
 				state = state.setIn(['level', 'currentAnswer'], action.answer);
 			}

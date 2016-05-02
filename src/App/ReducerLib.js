@@ -12,6 +12,10 @@ export default {
 		return this.getProblemsNumeric(tables).sort(() => 0.5 - Math.random());
 	},
 
+	getProblemsRandomRotated(tables){
+		return this.getProblemsNumeric(tables).sort(() => 0.5 - Math.random()).map(str => str.split('*').sort(() => 0.5 - Math.random()).join('*'));
+	},
+
 	checkAnswer(problem, answer){
 		const a = problem.split('*');
 		return parseInt(a[0]) * parseInt(a[1]) == answer;
@@ -55,6 +59,27 @@ export default {
 					}
 				});
 				level.problems = this.getProblemsRandom(tables);
+				break;
+
+			case 'level4':
+				level.grid = Array(100).fill({}).map((obj, index) => {
+					return {
+						value: index + 1,
+						enabled: true
+					}
+				});
+				level.problems = this.getProblemsRandomRotated(tables);
+				break;
+
+			case 'level5':
+				// TODO
+				level.grid = Array(100).fill({}).map((obj, index) => {
+					return {
+						value: index + 1,
+						enabled: true
+					}
+				});
+				level.problems = this.getProblemsRandomRotated(tables);
 				break;
 		}
 		return level;
