@@ -73,13 +73,13 @@ export default {
 
 			case 'level5':
 				// TODO
-				level.grid = Array(100).fill({}).map((obj, index) => {
+				level.grid = this.getProblemsRandomRotated(tables).map((problem, index) => {
 					return {
-						value: index + 1,
+						value: problem,
 						enabled: true
 					}
 				});
-				level.problems = this.getProblemsRandomRotated(tables);
+				level.problems = tables.reduce((arr, table) => arr.concat(Array(10).fill(0).map((dummy, index) => (index + 1) * table)), []);
 				break;
 		}
 		return level;
