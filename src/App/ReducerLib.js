@@ -72,7 +72,6 @@ export default {
 				break;
 
 			case 'level5':
-				// TODO
 				level.grid = this.getProblemsRandomRotated(tables).map((problem, index) => {
 					return {
 						value: problem,

@@ -2,7 +2,7 @@ import immutable from 'immutable';
 export default immutable.fromJS({
 	nr: 0,
 	gameState: 'start',
-	currentChallenge: '',
+	currentChallenge: null,
 	challenges: {
 		c1_1: {
 			name: 'Nivå 1',

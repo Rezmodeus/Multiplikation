@@ -6,10 +6,6 @@ import AnswerResult from './AnswerResult.react';
 
 export default React.createClass({
 
-	checkAnswer(answer){
-		this.props.checkAnswer(this.props.level.getIn(['problems', this.props.level.get('currentStep')]), answer);
-	},
-
 	render() {
 		const currentStep = this.props.level.get('currentStep');
 		const problems = this.props.level.get('problems');
@@ -24,7 +20,7 @@ export default React.createClass({
 					<span className={cls}> {this.props.level.get('currentAnswer')}</span>
 				</h1>
 				<AnswerResult ok={ok} nr={this.props.nr}/>
-				<Grid100 level={this.props.level} checkAnswer={this.checkAnswer}/>
+				<Grid100 level={this.props.level} checkAnswer={this.props.checkAnswer}/>
 			</div>
 		)
 	}

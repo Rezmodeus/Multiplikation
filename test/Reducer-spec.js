@@ -18,7 +18,7 @@ describe('Reducer:START_CHALLENGE', ()=> {
 		expect(state.get('level').size > 0).toBe(true);
 		expect(state.getIn(['level', 'grid', 0, 'enabled'])).toBe(true);
 		expect(state.getIn(['level', 'grid', 99, 'enabled'])).toBe(false);
-		expect(state.get('currentChallenge')).toBe(action.challenge);
+		expect(state.getIn(['currentChallenge','id'])).toBe(action.challenge);
 		expect(state.get('gameState')).toBe('game');
 	});
 

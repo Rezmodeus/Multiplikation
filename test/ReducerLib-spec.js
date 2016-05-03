@@ -81,7 +81,6 @@ describe('ReducerLib:getGameData', ()=> {
 	});
 	it('should get level5 data correctly', ()=> {
 		let level = ReducerLib.getLevelData('level5', [1]);
-		console.log(level);
 		expect(level.problems.length).toBe(10);
 		expect(level.grid.length).toBe(10);
 	});
