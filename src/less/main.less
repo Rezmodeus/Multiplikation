@@ -1,4 +1,6 @@
-@answer-button-size: 50px;
+@answer-button-margin: 5px;
+@answer-button-size: 65px;
+@answer-button-calc-size: @answer-button-margin + @answer-button-size;
 body {
   background-color: antiquewhite;
 }
@@ -11,52 +13,61 @@ body {
 .h2 {
 }
 
-.grid-button {
-  width: @answer-button-size;
-}
-
-.grid-container {
-  width: @answer-button-size * 10;
-}
-
-.history-container {
-  //display: flex;
-}
-
-.history-item {
-  color: #000;
-  transition: transform 1.2s ease-in-out;
-  &.ok {
-    color: #0a0;
-    transform: scale(3.0);
-  }
-  &.wrong {
-    color: #a00;
-  }
-}
-
 .game-container {
   position: absolute;
-  width: 60%;
-  height: 100%;
+  //width: 60%;
+  //height: 100%;
   padding: 0;
-  margin-top: 10%;
-  margin-left: 20%;
+  //margin-top: 5%;
+  //margin-left: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+
+.grid-button {
+  width: @answer-button-size;
+  margin: @answer-button-margin;
+}
+
+.grid-container {
+  width: @answer-button-calc-size * 11;
+}
+
+.history-container {
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  clear: both;
+}
+
+.history-item {
+  font-size: 2em;
+  color: #000;
+  &.ok {
+    animation: entry .2s;
+    color: #0a0;
+  }
+  &.wrong {
+    animation: entry .2s;
+    color: #a00;
+  }
+}
+@keyframes entry {
+  0% {
+    transform: scale(2.0);
+  }
+  100% {
+    transform: scale(1.0);
+  }
 }
 
 .challenge-container {
   display: flex;
   flex-direction: column;
   flex-flow: nowrap;
-}
-
-.history-container {
-  height: 200px;
-  padding: 5px;
 }
 
 .problem-text {

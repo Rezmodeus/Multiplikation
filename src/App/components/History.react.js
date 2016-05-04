@@ -5,9 +5,9 @@ export default React.createClass({
 
 	render() {
 		const history = this.props.history.valueSeq().map(item => {
+			const cls = item.get('ok') ? 'history-item ok' : 'history-item wrong';
 			return (
-				<div
-					className={item.get('ok') ? 'history-item ok' : 'history-item wrong'}>
+				<div key={item.get('key')} className={cls} >
 					{item.get('value')}
 				</div>
 			)

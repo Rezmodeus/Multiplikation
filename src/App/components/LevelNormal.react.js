@@ -10,7 +10,7 @@ export default React.createClass({
 	render() {
 		const currentStep = this.props.level.get('currentStep');
 		const problems = this.props.level.get('problems');
-		const problem = problems.get(currentStep).replace('*','×');
+		const problem = (problems.get(currentStep)+'').replace('*','×');
 		const currentAnswer = this.props.level.get('currentAnswer');
 		const ok = this.props.level.get('ok');
 		const cls = currentAnswer != '' ? 'wrong-answer' : '';

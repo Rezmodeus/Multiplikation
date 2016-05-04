@@ -29,6 +29,7 @@ export default {
 			problems: [],
 			score: 0,
 			ok: '',
+			//history:[]
 			history:Array(5).fill({}).map(obj => {
 				return {
 					value: '\u00a0',
