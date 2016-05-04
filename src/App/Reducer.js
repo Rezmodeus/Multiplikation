@@ -3,9 +3,8 @@ import ReducerLib from './ReducerLib';
 export default function (state, action) {
 	switch (action.type) {
 		case 'START_CHALLENGE':
-		console.log(action)
 			let ch = state.getIn(['challenges', action.challenge]);
-			ch = ch.set('id',action.challenge);
+			ch = ch.set('id', action.challenge);
 			const tables = ch.get('tables').toJS();
 			const data = ReducerLib.getLevelData(ch.get('levelType'), tables);
 			state = state.set('currentChallenge', ch);
@@ -31,10 +30,21 @@ export default function (state, action) {
 			}
 			if (answerOk) {
 				state = state.updateIn(['level', 'currentStep'], n => n + 1);
-				state = state.setIn(['level', 'grid', action.answer-1, 'enabled'], false);
+				state = state.setIn(['level', 'grid', action.answer - 1, 'enabled'], false);
 			} else {
 				state = state.setIn(['level', 'currentAnswer'], action.answer);
 			}
+			let history = state.getIn(['level', 'history']);
+			const equalSign = answerOk ? '=' : '≠';
+			history = history.push(immutable.fromJS({
+				value: `${action.problem.replace('*', '×')} ${equalSign} ${action.answer}`,
+				ok: answerOk,
+				key: Math.floor(Math.random() * 1000)
+			}));
+			if (history.size >= 5) {
+				history = history.shift();
+			}
+			state = state.setIn(['level', 'history'], history);
 			return state;
 
 		default:

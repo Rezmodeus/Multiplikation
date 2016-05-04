@@ -28,7 +28,14 @@ export default {
 			currentAnswer: '',
 			problems: [],
 			score: 0,
-			ok: ''
+			ok: '',
+			history:Array(5).fill({}).map(obj => {
+				return {
+					value: '\u00a0',
+					ok: false,
+					key: Math.floor(Math.random() * 1000)
+				}
+			})
 		};
 		switch (gameLevel) {
 			case 'level1':

@@ -6,12 +6,17 @@ export default React.createClass({
 
 	getChallengesWell(tableNr){
 		let nr = 0;
+		const challenges = this.props.challenges.entrySeq()
+			.filter(([key, value]) => key.charAt(1) == tableNr)
+			.map(([name,challenge]) => {
+				return (<Button disabled={!challenge.get('unlocked')} key={nr++} bsStyle="info" bsSize="large"
+								onClick={()=>this.props.startChallenge(name)}>{challenge.get('name')}</Button>
+				);
+			});
 		return (
 			<Well>
 				<h2>Tabell {tableNr}</h2>
-				{this.props.challenges
-					.filter( (value, key)=> key.charAt(1) == tableNr)
-					.map( (challenge,name) => <Button disabled={!challenge.get('unlocked')} key={nr++} bsStyle="info" bsSize="large" onClick={()=>this.props.startChallenge(name)}>{challenge.get('name')}</Button>)}
+				{challenges}
 			</Well>
 		)
 	},
@@ -31,5 +36,4 @@ export default React.createClass({
 			</div>
 		)
 	}
-})
-;
+});

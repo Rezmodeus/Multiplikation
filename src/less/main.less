@@ -1,3 +1,4 @@
+@answer-button-size: 50px;
 body {
   background-color: antiquewhite;
 }
@@ -10,9 +11,41 @@ body {
 .h2 {
 }
 
-.form-control {
-  width: 50%;
+.grid-button {
+  width: @answer-button-size;
+}
 
+.grid-container {
+  width: @answer-button-size * 10;
+}
+
+.history-container {
+  //display: flex;
+}
+
+.history-item {
+  color: #000;
+  transition: transform 1.2s ease-in-out;
+  &.ok {
+    color: #0a0;
+    transform: scale(3.0);
+  }
+  &.wrong {
+    color: #a00;
+  }
+}
+
+.game-container {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  padding: 0;
+  margin-top: 10%;
+  margin-left: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .challenge-container {
@@ -21,17 +54,84 @@ body {
   flex-flow: nowrap;
 }
 
+.history-container {
+  height: 200px;
+  padding: 5px;
+}
+
+.problem-text {
+  font-size: 4em;
+}
+
 .answer-result {
   z-index: 10;
   color: #009999;
   font-size: 100px;
   opacity: 1;
-  &.remove{
+  &.remove {
     color: #f00;
   }
   &.ok {
     transition: opacity 2s ease-out;
     opacity: 0;
+  }
+}
+
+.tick {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
+
+.tick_circle {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background-color: green;
+  border-radius: 11px;
+  left: 0;
+  top: 0;
+}
+
+.tick_stem {
+  position: absolute;
+  width: 3px;
+  height: 9px;
+  background-color: #fff;
+  left: 11px;
+  top: 6px;
+}
+
+.tick_kick {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: #fff;
+  left: 8px;
+  top: 12px;
+}
+
+.cross {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  background-color: #FA6900;
+  border-radius: 5px;
+  position: relative;
+  &:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 3px;
+    content: "\274c"; /* use the hex value here... */
+    font-size: 20px;
+    color: #FFF;
+    line-height: 27px;
+    text-align: center;
   }
 }
 
