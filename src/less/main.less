@@ -3,14 +3,8 @@
 @answer-button-calc-size: @answer-button-margin + @answer-button-size;
 body {
   background-color: antiquewhite;
-}
-
-.btn {
-  &:after {
-  }
-}
-
-.h2 {
+  margin: 0;
+  padding: 0;
 }
 
 .game-container {
@@ -55,6 +49,19 @@ body {
     color: #a00;
   }
 }
+.navigation-container{
+  padding: 0;
+  margin: 10px auto;
+  width: @answer-button-calc-size * 11;
+  display: flex;
+  justify-content: space-between;
+}
+.back-btn{
+}
+
+.restart-btn{
+}
+
 @keyframes entry {
   0% {
     transform: scale(2.0);
