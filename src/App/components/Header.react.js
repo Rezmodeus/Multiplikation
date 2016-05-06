@@ -8,13 +8,14 @@ export default React.createClass({
 	render() {
 		return (
 			<div className="header">
-				{ this.props.gameState=='game' ?
-				<Navigation {...this.props}/>
-				:
-				null }
+				{ this.props.gameState == 'game' ?
+					<Navigation {...this.props}/>
+					:
+					<Button bsStyle="success" bsSize="small" onClick={()=> this.props.addStar()}>add
+						star {this.props.stars}</Button>
+				}
 			</div>
 		)
 	}
 });
-//<Button bsStyle="success" bsSize="small" onClick={()=> this.props.addStar()}>add star {this.props.stars}</Button>
 

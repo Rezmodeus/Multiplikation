@@ -9,7 +9,7 @@ describe('START_CHALLENGE', ()=> {
 
 	beforeEach(()=> {
 		state = INITIAL_STATE;
-		action = {type: 'START_CHALLENGE', challenge: 'c1_1'}
+		action = {type: 'START_CHALLENGE', challenge: '1_1'}
 	});
 
 	it('should set level data', ()=> {
@@ -30,7 +30,7 @@ describe('CHECK_ANSWER', ()=> {
 
 	beforeEach(()=> {
 		state = INITIAL_STATE;
-		action = {type: 'START_CHALLENGE', challenge: 'c1_1'};
+		action = {type: 'START_CHALLENGE', challenge: '1_1'};
 		state = Reducer(state, action);
 		action = {type: 'CHECK_ANSWER', problem: '1*1', answer: '1'}
 	});
@@ -83,7 +83,7 @@ describe('CHECK_ANSWER', ()=> {
 	it('should add items to history', ()=> {
 		action = {type: 'CHECK_ANSWER', problem: '1*1', answer: '1'};
 		state = Reducer(state, action);
-		expect(state.getIn(['level', 'history']).size).toBe(1);
+		expect(state.getIn(['level', 'history']).last().get('value')).toBe('1×1 = 1');
 	});
 });
 
@@ -96,10 +96,9 @@ describe('ADD_STAR', ()=> {
 		action = {type: 'ADD_STAR'}
 	});
 
-	it.only('should add star', ()=> {
+	it('should add star', ()=> {
 		expect(state.get('stars')).toBe(0);
 		state = Reducer(state, action);
-		console.log(state)
 		expect(state.get('stars')).toBe(1);
 	});
 

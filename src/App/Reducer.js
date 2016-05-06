@@ -3,10 +3,9 @@ import ReducerLib from './ReducerLib';
 export default function (state, action) {
 	switch (action.type) {
 		case 'START_CHALLENGE':
-			let ch = state.getIn(['challenges', action.challenge]);
-			ch = ch.set('id', action.challenge);
+			let ch = state.get('challenges').find( challenge =>  challenge.get('id') == action.challenge);
 			const tables = ch.get('tables').toJS();
-			const data = ReducerLib.getLevelData(ch.get('levelType'), tables);
+			const data = ReducerLib.getLevelData('level'+ch.get('level'), tables);
 			state = state.set('currentChallenge', ch);
 			state = state.set('gameState', 'game');
 			state = state.set('level', immutable.fromJS(data));
