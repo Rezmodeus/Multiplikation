@@ -1,5 +1,6 @@
 import immutable from 'immutable';
 export default immutable.fromJS({
+	stars:0,
 	nr: 0,
 	gameState: 'start',
 	currentChallenge: null,

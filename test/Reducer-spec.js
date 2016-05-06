@@ -3,7 +3,7 @@ import expect from 'expect';
 import INITIAL_STATE from '../src/App/INITIAL_STATE'
 import Reducer from '../src/App/Reducer'
 
-describe('Reducer:START_CHALLENGE', ()=> {
+describe('START_CHALLENGE', ()=> {
 
 	let state, action;
 
@@ -24,7 +24,7 @@ describe('Reducer:START_CHALLENGE', ()=> {
 
 });
 
-describe('Reducer:CHECK_ANSWER', ()=> {
+describe('CHECK_ANSWER', ()=> {
 
 	let state, action;
 
@@ -84,6 +84,23 @@ describe('Reducer:CHECK_ANSWER', ()=> {
 		action = {type: 'CHECK_ANSWER', problem: '1*1', answer: '1'};
 		state = Reducer(state, action);
 		expect(state.getIn(['level', 'history']).size).toBe(1);
+	});
+});
+
+describe('ADD_STAR', ()=> {
+
+	let state, action;
+
+	beforeEach(()=> {
+		state = INITIAL_STATE;
+		action = {type: 'ADD_STAR'}
+	});
+
+	it.only('should add star', ()=> {
+		expect(state.get('stars')).toBe(0);
+		state = Reducer(state, action);
+		console.log(state)
+		expect(state.get('stars')).toBe(1);
 	});
 
 });

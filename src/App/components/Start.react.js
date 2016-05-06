@@ -20,8 +20,8 @@ export default React.createClass({
 			</Well>
 		)
 	},
-	render()
-	{
+
+	render() {
 		let nr = 0;
 		const challenges = this.props.challenges.map(challenge => {
 			const unlocked = challenge.get('unlocked');
@@ -30,7 +30,7 @@ export default React.createClass({
 		});
 
 		return (
-			<div>
+			<div className="challenge-container">
 				{this.getChallengesWell(1)}
 				{this.getChallengesWell(2)}
 			</div>

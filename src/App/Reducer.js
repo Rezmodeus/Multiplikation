@@ -12,6 +12,9 @@ export default function (state, action) {
 			state = state.set('level', immutable.fromJS(data));
 			return state;
 
+		case 'RESTART_CHALLENGE':
+			return state;
+
 		case 'BACK_TO_START':
 			state = state.set('gameState', 'start');
 			return state;
@@ -45,6 +48,10 @@ export default function (state, action) {
 				history = history.shift();
 			}
 			state = state.setIn(['level', 'history'], history);
+			return state;
+
+		case 'ADD_STAR':
+			state = state.update('stars', n => n+1);
 			return state;
 
 		default:

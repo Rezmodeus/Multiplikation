@@ -21,14 +21,7 @@ export default React.createClass({
 		};
 
 		return (
-			<div>
-				<div className="navigation-container">
-					<Button className="back-btn" bsStyle="info" bsSize="large" onClick={()=>this.props.backToStart()}>Tillbaks</Button>
-					<Button className="restart-btn" bsStyle="danger" bsSize="large" onClick={()=>this.props.startChallenge(this.props.currentChallenge.get('id'))}>Starta om</Button>
-				</div>
-				<LevelNormal {...payload }/>
-
-			</div>
+			<LevelNormal {...payload }/>
 		)
 	}
 });

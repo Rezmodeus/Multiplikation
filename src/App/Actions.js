@@ -1,8 +1,15 @@
 export default {
+
 	startChallenge(challenge){
 		return {
 			type: 'START_CHALLENGE',
 			challenge
+		}
+	},
+
+	restartChallenge(){
+		return {
+			type: 'RESTART_CHALLENGE'
 		}
 	},
 
@@ -17,6 +24,12 @@ export default {
 			type: 'CHECK_ANSWER',
 			problem,
 			answer
+		}
+	},
+
+	addStar(){
+		return {
+			type: 'ADD_STAR'
 		}
 	}
 
