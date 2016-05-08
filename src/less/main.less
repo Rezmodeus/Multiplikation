@@ -31,6 +31,10 @@ body {
 .grid-button {
   width: @answer-button-size;
   margin: @answer-button-margin;
+  &.disabled {
+    background: #aaa;
+    color: #555;
+  }
 }
 
 .grid-container {
@@ -85,6 +89,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+}
+
+.challenge-btn {
+
 }
 
 .problem-text {
@@ -163,3 +171,35 @@ body {
   }
 }
 
+.keyframes(@name; @arguments) {
+  @-moz-keyframes @name { @arguments();
+  }
+  @-webkit-keyframes @name { @arguments();
+  }
+  @keyframes @name { @arguments();
+  }
+}
+
+.animation(@arguments) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  animation: @arguments;
+}
+
+.test {
+  .keyframes(fade-in; {
+    0% {
+      background-color: #749a02;
+      -webkit-box-shadow: 0 0 9px #333;
+    }
+    50% {
+      background-color: #91bd09;
+      -webkit-box-shadow: 0 0 18px #91bd09;
+    }
+    100% {
+      background-color: #749a02;
+      -webkit-box-shadow: 0 0 9px #333;
+    } });
+  .animation(fade-in 1.2s linear infinite alternate)
+
+}

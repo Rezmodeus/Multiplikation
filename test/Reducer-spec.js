@@ -98,8 +98,14 @@ describe('ADD_STAR', ()=> {
 
 	it('should add star', ()=> {
 		expect(state.get('stars')).toBe(0);
+		expect(state.get('prevStars')).toBe(0);
 		state = Reducer(state, action);
+
+		expect(state.get('prevStars')).toBe(0);
 		expect(state.get('stars')).toBe(1);
+
+		state = Reducer(state, action);
+		expect(state.get('prevStars')).toBe(1);
 	});
 
 });

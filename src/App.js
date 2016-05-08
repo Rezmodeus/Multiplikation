@@ -38,7 +38,8 @@ const mapStateToProps = (state) => {
 		currentChallenge: state.get('currentChallenge'),
 		challenges: state.get('challenges'),
 		level: state.get('level'),
-		stars: state.get('stars')
+		stars: state.get('stars'),
+		prevStars: state.get('prevStars')
 	}
 };
 

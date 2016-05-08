@@ -50,6 +50,7 @@ export default function (state, action) {
 			return state;
 
 		case 'ADD_STAR':
+			state = state.set('prevStars',state.get('stars'));
 			state = state.update('stars', n => n+1);
 			return state;
 

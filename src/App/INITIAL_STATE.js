@@ -24,6 +24,7 @@ function getStandardChallenges() {
 
 export default immutable.fromJS({
 	stars: 0,
+	prevStars: 0,
 	nr: 0,
 	gameState: 'start',
 	currentChallenge: null,
