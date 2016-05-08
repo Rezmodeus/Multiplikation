@@ -9,7 +9,7 @@ require('./less/main.less');
 const App = React.createClass({
 	render() {
 		const headerPayload = {
-			addStar: this.props.addStar,
+			addStars: this.props.addStars,
 			backToStart: this.props.backToStart,
 			restartChallenge: this.props.restartChallenge,
 			stars: this.props.stars,
@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch) => {
 		restartChallenge: ()=>dispatch(Actions.restartChallenge()),
 		backToStart: (challenge)=>dispatch(Actions.backToStart(challenge)),
 		checkAnswer: (problem, answer) => dispatch(Actions.checkAnswer(problem, answer)),
-		addStar: () => dispatch(Actions.addStar())
+		addStars: (nr) => dispatch(Actions.addStars(nr))
 	}
 };
 export default connect(

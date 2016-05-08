@@ -27,9 +27,10 @@ export default {
 		}
 	},
 
-	addStar(){
+	addStars(nr){
 		return {
-			type: 'ADD_STAR'
+			type: 'ADD_STARS',
+			nr
 		}
 	}
 

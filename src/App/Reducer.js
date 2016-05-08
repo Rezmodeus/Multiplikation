@@ -3,9 +3,9 @@ import ReducerLib from './ReducerLib';
 export default function (state, action) {
 	switch (action.type) {
 		case 'START_CHALLENGE':
-			let ch = state.get('challenges').find( challenge =>  challenge.get('id') == action.challenge);
+			let ch = state.get('challenges').find(challenge => challenge.get('id') == action.challenge);
 			const tables = ch.get('tables').toJS();
-			const data = ReducerLib.getLevelData('level'+ch.get('level'), tables);
+			const data = ReducerLib.getLevelData('level' + ch.get('level'), tables);
 			state = state.set('currentChallenge', ch);
 			state = state.set('gameState', 'game');
 			state = state.set('level', immutable.fromJS(data));
@@ -49,9 +49,9 @@ export default function (state, action) {
 			state = state.setIn(['level', 'history'], history);
 			return state;
 
-		case 'ADD_STAR':
-			state = state.set('prevStars',state.get('stars'));
-			state = state.update('stars', n => n+1);
+		case 'ADD_STARS':
+			state = state.set('prevStars', state.get('stars'));
+			state = state.update('stars', n => n + action.nr);
 			return state;
 
 		default:
