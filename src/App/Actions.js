@@ -32,6 +32,12 @@ export default {
 			type: 'ADD_STARS',
 			nr
 		}
+	},
+
+	closeModal(){
+		return {
+			type: 'CLOSE_MODAL'
+		}
 	}
 
 }

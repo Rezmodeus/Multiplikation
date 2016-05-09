@@ -22,6 +22,7 @@ export default {
 	},
 
 	getLevelData(gameLevel, tables){
+		const maxGridValues = tables.reduce((prev, current) => Math.max(prev, current * 10), 100);
 		let level = {
 			problemNr: 0,
 			currentStep: 0,
@@ -30,7 +31,7 @@ export default {
 			score: 0,
 			ok: '',
 			//history:[]
-			history:Array(5).fill({}).map(obj => {
+			history: Array(5).fill({}).map(obj => {
 				return {
 					value: '\u00a0',
 					ok: false,
@@ -40,7 +41,7 @@ export default {
 		};
 		switch (gameLevel) {
 			case 'level1':
-				level.grid = Array(100).fill({}).map((obj, index) => {
+				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
 						value: index + 1,
 						enabled: this.isEnabled(tables, index + 1)
@@ -50,7 +51,7 @@ export default {
 				break;
 
 			case 'level2':
-				level.grid = Array(100).fill({}).map((obj, index) => {
+				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
 						value: index + 1,
 						enabled: true
@@ -60,7 +61,7 @@ export default {
 				break;
 
 			case 'level3':
-				level.grid = Array(100).fill({}).map((obj, index) => {
+				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
 						value: index + 1,
 						enabled: this.isEnabled(tables, index + 1)
@@ -70,7 +71,7 @@ export default {
 				break;
 
 			case 'level4':
-				level.grid = Array(100).fill({}).map((obj, index) => {
+				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
 						value: index + 1,
 						enabled: true

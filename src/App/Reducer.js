@@ -22,7 +22,7 @@ export default function (state, action) {
 			state = state.update('nr', nr => nr + 1);
 			const answerOk = ReducerLib.checkAnswer(action.problem, action.answer);
 			state = state.setIn(['level', 'ok'], answerOk ? 'ok' : 'remove');
-			const currentChallenge = state.get('currentChallenge')
+			const currentChallenge = state.get('currentChallenge');
 			const currentLevelType = currentChallenge.get('levelType');
 			switch (currentLevelType) {
 				case 'level1':
@@ -31,7 +31,9 @@ export default function (state, action) {
 					break;
 			}
 			if (answerOk) {
-				state = state.updateIn(['level', 'currentStep'], n => n + 1);
+				if (state.getIn(['level', 'currentStep']) < state.getIn(['level', 'problems']).size) {
+					state = state.updateIn(['level', 'currentStep'], n => n + 1);
+				}
 				state = state.setIn(['level', 'grid', action.answer - 1, 'enabled'], false);
 			} else {
 				state = state.setIn(['level', 'currentAnswer'], action.answer);
@@ -47,11 +49,23 @@ export default function (state, action) {
 				history = history.shift();
 			}
 			state = state.setIn(['level', 'history'], history);
+
+			if (state.getIn(['level', 'currentStep']) == state.getIn(['level', 'problems']).size) {
+				state = state.set('modal', immutable.fromJS({
+					visible: true,
+					type: 'win',
+					text: 'du vann'
+				}));
+			}
 			return state;
 
 		case 'ADD_STARS':
 			state = state.set('prevStars', state.get('stars'));
 			state = state.update('stars', n => n + action.nr);
+			return state;
+
+		case 'CLOSE_MODAL':
+			state = state.setIn(['modal', 'visible'], false);
 			return state;
 
 		default:

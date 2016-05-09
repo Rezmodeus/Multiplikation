@@ -68,6 +68,7 @@ describe('ReducerLib:getGameData', ()=> {
 		expect(level.problems.length).toBe(10);
 		expect(level.problems[0]).toBe('1*1');
 		expect(level.problems[9]).toBe('1*10');
+		expect(level.grid.length).toBe(100);
 		expect(level.grid[0].enabled).toBe(true);
 		expect(level.grid[9].enabled).toBe(true);
 		expect(level.grid[10].enabled).toBe(false);
@@ -79,10 +80,17 @@ describe('ReducerLib:getGameData', ()=> {
 		expect(level.grid[10].enabled).toBe(false);
 		expect(level.grid[11].enabled).toBe(true);
 	});
+
 	it('should get level5 data correctly', ()=> {
 		let level = ReducerLib.getLevelData('level5', [1]);
 		expect(level.problems.length).toBe(10);
 		expect(level.grid.length).toBe(10);
+	});
+
+	it('should get grids bigger than 100', ()=> {
+		let level = ReducerLib.getLevelData('level1', [11]);
+		expect(level.problems.length).toBe(10);
+		expect(level.grid.length).toBe(110);
 	});
 
 });

@@ -28,9 +28,11 @@ export default immutable.fromJS({
 	nr: 0,
 	gameState: 'start',
 	currentChallenge: null,
-	categories: [
-		0
-	],
+	modal: {
+		visible: false,
+		type:'',
+		text:''
+	},
 	challenges: getStandardChallenges(),
 	challenges_old: {
 		c1_1: {

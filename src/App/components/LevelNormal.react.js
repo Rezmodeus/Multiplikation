@@ -8,8 +8,8 @@ import Tick from './Tick.react';
 export default React.createClass({
 
 	render() {
-		const currentStep = this.props.level.get('currentStep');
 		const problems = this.props.level.get('problems');
+		const currentStep = Math.min(this.props.level.get('currentStep'), problems.size-1);
 		const problem = (problems.get(currentStep)+'').replace('*','×');
 		const currentAnswer = this.props.level.get('currentAnswer');
 		const ok = this.props.level.get('ok');

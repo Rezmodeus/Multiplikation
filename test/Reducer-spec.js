@@ -18,7 +18,7 @@ describe('START_CHALLENGE', ()=> {
 		expect(state.get('level').size > 0).toBe(true);
 		expect(state.getIn(['level', 'grid', 0, 'enabled'])).toBe(true);
 		expect(state.getIn(['level', 'grid', 99, 'enabled'])).toBe(false);
-		expect(state.getIn(['currentChallenge','id'])).toBe(action.challenge);
+		expect(state.getIn(['currentChallenge', 'id'])).toBe(action.challenge);
 		expect(state.get('gameState')).toBe('game');
 	});
 
@@ -85,6 +85,24 @@ describe('CHECK_ANSWER', ()=> {
 		state = Reducer(state, action);
 		expect(state.getIn(['level', 'history']).last().get('value')).toBe('1×1 = 1');
 	});
+
+	it('should activate modal when level is done', ()=> {
+		state = state.setIn(['level', 'currentStep'],9);
+		action = {type: 'CHECK_ANSWER', problem: '1*10', answer: '10'};
+		expect(state.getIn(['modal', 'visible'])).toBe(false);
+		state = Reducer(state, action);
+		expect(state.getIn(['modal', 'visible'])).toBe(true);
+	});
+
+	it('should not step currentstep beyond end of problems', ()=> {
+		state = state.setIn(['level', 'currentStep'],9);
+		action = {type: 'CHECK_ANSWER', problem: '1*10', answer: '10'};
+
+		expect(state.getIn(['level', 'currentStep'])).toBe(9);
+		state = Reducer(state, action);
+		expect(state.getIn(['level', 'currentStep'])).toBe(9);
+	});
+
 });
 
 describe('ADD_STARS', ()=> {
@@ -93,7 +111,7 @@ describe('ADD_STARS', ()=> {
 
 	beforeEach(()=> {
 		state = INITIAL_STATE;
-		action = {type: 'ADD_STARS', nr:1}
+		action = {type: 'ADD_STARS', nr: 1}
 	});
 
 	it('should add star', ()=> {
@@ -119,6 +137,27 @@ describe('ADD_STARS', ()=> {
 
 		state = Reducer(state, action);
 		expect(state.get('prevStars')).toBe(2);
+	});
+});
+
+describe('ADD_STARS', ()=> {
+
+	let state, action;
+
+	beforeEach(()=> {
+		state = INITIAL_STATE;
+		action = {type: 'CLOSE_MODAL'}
+	});
+
+	it('should close modal', ()=> {
+		expect(state.getIn(['modal', 'visible'])).toBe(false);
+		state = Reducer(state, action);
+		expect(state.getIn(['modal', 'visible'])).toBe(false);
+
+		state = state.setIn(['modal','visible'],true);
+		expect(state.getIn(['modal', 'visible'])).toBe(true);
+		state = Reducer(state, action);
+		expect(state.getIn(['modal', 'visible'])).toBe(false);
 	});
 });
 

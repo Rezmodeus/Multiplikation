@@ -15,16 +15,16 @@ export default React.createClass({
 			.map( ([k,ch]) => {
 				const disabled = this.props.stars < ch.get('requiredStars');
 				const newFlag = this.props.stars >= ch.get('requiredStars') && this.props.prevStars < ch.get('requiredStars');
-				const cls = newFlag ? 'test' : '';
+				const cls = newFlag ? 'pulsating' : disabled ? 'disabled-btn':'';
 				return (<Button className={cls} disabled={disabled} key={nr++} bsStyle="info" bsSize="large"
 								onClick={()=>this.props.startChallenge(ch.get('id'))}>Nivå {ch.get('level')}</Button>
 				);
 			});
 		return (
-			<Well>
+			<div className="table-container">
 				<h2>Tabell {tableNr}</h2>
 				{challenges}
-			</Well>
+			</div>
 		)
 	},
 
