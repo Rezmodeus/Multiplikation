@@ -6,26 +6,29 @@ export default React.createClass({
 
 	render() {
 		const visible = this.props.modal.get('visible');
-		const modalInstance = (
-			<div className="static-modal">
-				<Modal show={visible} onClick={this.props.closeModal}>
-					<Modal.Header>
-						<Modal.Title>Modal title</Modal.Title>
-					</Modal.Header>
+		let modalInstance = null;
+		if (visible) {
+			modalInstance = (
+				<div className="static-modal">
+					<Modal show={visible} onClick={this.props.closeModal}>
+						<Modal.Header>
+							<Modal.Title>Modal title</Modal.Title>
+						</Modal.Header>
 
-					<Modal.Body>
-						One fine body...
-					</Modal.Body>
+						<Modal.Body>
+							One fine body...
+						</Modal.Body>
 
-					<Modal.Footer>
-						<Button bsStyle="primary" onClick={this.props.closeModal}>OK</Button>
-					</Modal.Footer>
-				</Modal>
-			</div>
-		);
+						<Modal.Footer>
+							<Button bsStyle="primary" onClick={this.props.closeModal}>OK</Button>
+						</Modal.Footer>
+					</Modal>
+				</div>
+			);
+		}
 		return (
 			<div>
-				{visible ? modalInstance : null}
+				{modalInstance}
 			</div>
 		)
 	}

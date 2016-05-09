@@ -3,15 +3,21 @@ import ReducerLib from './ReducerLib';
 export default function (state, action) {
 	switch (action.type) {
 		case 'START_CHALLENGE':
-			let ch = state.get('challenges').find(challenge => challenge.get('id') == action.challenge);
+			const ch = state.get('challenges').find(challenge => challenge.get('id') == action.challenge);
 			const tables = ch.get('tables').toJS();
 			const data = ReducerLib.getLevelData('level' + ch.get('level'), tables);
 			state = state.set('currentChallenge', ch);
+			state = state.set('currentChallengeName', action.challenge);
 			state = state.set('gameState', 'game');
 			state = state.set('level', immutable.fromJS(data));
 			return state;
 
 		case 'RESTART_CHALLENGE':
+			const challengeName = state.get('currentChallengeName');
+			const previousCh = state.get('challenges').find(challenge => challenge.get('id') == challengeName);
+			const previousTables = previousCh.get('tables').toJS();
+			const previousData = ReducerLib.getLevelData('level' + previousCh.get('level'), previousTables);
+			state = state.set('level', immutable.fromJS(previousData));
 			return state;
 
 		case 'BACK_TO_START':

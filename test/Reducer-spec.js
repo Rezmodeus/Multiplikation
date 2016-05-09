@@ -94,15 +94,6 @@ describe('CHECK_ANSWER', ()=> {
 		expect(state.getIn(['modal', 'visible'])).toBe(true);
 	});
 
-	it('should not step currentstep beyond end of problems', ()=> {
-		state = state.setIn(['level', 'currentStep'],9);
-		action = {type: 'CHECK_ANSWER', problem: '1*10', answer: '10'};
-
-		expect(state.getIn(['level', 'currentStep'])).toBe(9);
-		state = Reducer(state, action);
-		expect(state.getIn(['level', 'currentStep'])).toBe(9);
-	});
-
 });
 
 describe('ADD_STARS', ()=> {
@@ -158,6 +149,23 @@ describe('ADD_STARS', ()=> {
 		expect(state.getIn(['modal', 'visible'])).toBe(true);
 		state = Reducer(state, action);
 		expect(state.getIn(['modal', 'visible'])).toBe(false);
+	});
+});
+describe('RESTART_CHALLENGE', ()=> {
+
+	let state, action;
+
+	beforeEach(()=> {
+		state = INITIAL_STATE;
+		action = {type: 'START_CHALLENGE', challenge: '1_1'}
+		state = Reducer(state, action);
+		action = {type: 'RESTART_CHALLENGE'}
+	});
+
+	it('should restart challenge with same level', ()=> {
+		const prevState = state;
+		state = Reducer(state, action);
+		//expect(immutable.is(state,prevState)).toBe(true);
 	});
 });
 
