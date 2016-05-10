@@ -1,6 +1,6 @@
 import React from 'react';
 import immutable from 'immutable';
-import {Button, Table} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 
 export default React.createClass({
 
@@ -16,10 +16,7 @@ export default React.createClass({
 					{(cell.get('value') + '').replace('*', '×')}
 				</Button>);
 		});
-		let grid = cells;//[];
-		//for (let i = 0; i < 10; i++) {
-		//	grid.push(<div key={nr++}>{cells.slice(i * 10, (i + 1) * 10)}</div>)
-		//}
+		let grid = cells;
 
 		return (
 			<div className="grid-container">

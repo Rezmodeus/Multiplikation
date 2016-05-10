@@ -202,19 +202,97 @@ body {
 }
 
 .pulsating {
-  .keyframes(fade-in; {
-    0% {
-      background-color: #749a02;
-      -webkit-box-shadow: 0 0 9px #333;
-    }
-    50% {
+  .keyframes(fade-in; { 0% {
+    background-color: #749a02;
+    -webkit-box-shadow: 0 0 9px #333;
+  } 50% {
       background-color: #91bd09;
       -webkit-box-shadow: 0 0 18px #91bd09;
-    }
-    100% {
-      background-color: #749a02;
-      -webkit-box-shadow: 0 0 9px #333;
-    } });
+    } 100% {
+        background-color: #749a02;
+        -webkit-box-shadow: 0 0 9px #333;
+      } });
   .animation(fade-in 1.2s linear infinite alternate)
-
 }
+
+@star-size: 10px;
+.star {
+  //margin: 50px 0;
+  display: inline-block;
+  position: relative;
+  color: yellow;
+  width: 0px;
+  height: 0px;
+  border-right: @star-size solid transparent;
+  border-bottom: @star-size * 0.7 solid yellow;
+  border-left: @star-size solid transparent;
+  transform: rotate(35deg);
+}
+
+.star:before {
+  border-bottom: @star-size * 0.8 solid yellow;
+  border-left: @star-size * 0.3 solid transparent;
+  border-right: @star-size * 0.3 solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -(@star-size * 0.45);
+  left: -(@star-size * 0.65);
+  display: block;
+  content: '';
+  transform: rotate(-35deg);
+}
+
+.star:after {
+  position: absolute;
+  display: block;
+  top: @star-size * 0.03;
+  left: -(@star-size * 1.05);
+  width: 0px;
+  height: 0px;
+  border-right: @star-size solid transparent;
+  border-bottom: @star-size * 0.70 solid yellow;
+  border-left: @star-size solid transparent;
+  transform: rotate(-70deg);
+  content: '';
+}
+//.star {
+//  //margin: 50px 0;
+//  display: block;
+//  position: relative;
+//  color: yellow;
+//  width: 0px;
+//  height: 0px;
+//  border-right: 100px solid transparent;
+//  border-bottom: 70px solid yellow;
+//  border-left: 100px solid transparent;
+//  transform: rotate(35deg);
+//}
+//
+//.star:before {
+//  border-bottom: 80px solid yellow;
+//  border-left: 30px solid transparent;
+//  border-right: 30px solid transparent;
+//  position: absolute;
+//  height: 0;
+//  width: 0;
+//  top: -45px;
+//  left: -65px;
+//  display: block;
+//  content: '';
+//  transform: rotate(-35deg);
+//}
+//
+//.star:after {
+//  position: absolute;
+//  display: block;
+//  top: 3px;
+//  left: -105px;
+//  width: 0px;
+//  height: 0px;
+//  border-right: 100px solid transparent;
+//  border-bottom: 70px solid yellow;
+//  border-left: 100px solid transparent;
+//  transform: rotate(-70deg);
+//  content: '';
+//}
