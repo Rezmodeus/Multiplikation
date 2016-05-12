@@ -29,6 +29,8 @@ export default immutable.fromJS({
 	currentChallenge: null,
 	stats:{},
 	challengeStars:{},
+	users:[],
+	currentUser:'',
 	modal: {
 		visible: false,
 		type:'',

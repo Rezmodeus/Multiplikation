@@ -38,6 +38,20 @@ export default {
 		return {
 			type: 'CLOSE_MODAL'
 		}
+	},
+
+	setCurrentUser(user){
+		return {
+			type: 'SET_CURRENT_USER',
+			user
+		}
+	},
+
+	newUser(user){
+		return {
+			type: 'NEW_USER',
+			user
+		}
 	}
 
 }
