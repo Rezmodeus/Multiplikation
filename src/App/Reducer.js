@@ -74,6 +74,22 @@ export default function (state, action) {
 			state = state.setIn(['modal', 'visible'], false);
 			return state;
 
+		case 'SET_CURRENT_USER':
+			if (state.get('users').includes(action.user)){
+				state = state.set('currentUser', action.user);
+			} else {
+				// TODO: toggle user select
+				// no such user
+			}
+			return state;
+
+		case 'NEW_USER':
+			let users = state.get('users');
+			users = users.push(action.user);
+			state = state.set('users',users);
+			state = state.set('currentUser',action.user);
+			return state;
+
 		default:
 			return state;
 

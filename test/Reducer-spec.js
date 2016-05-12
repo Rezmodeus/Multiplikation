@@ -169,3 +169,46 @@ describe('RESTART_CHALLENGE', ()=> {
 	});
 });
 
+describe('SET_CURRENT_USER', ()=> {
+
+	let state, action;
+
+	beforeEach(()=> {
+		state = INITIAL_STATE;
+		state = state.set('users', immutable.fromJS([
+			'Leia','Amidala'
+		]));
+		action = {type: 'SET_CURRENT_USER', user:''}
+	});
+
+	it('should set user if it exists in users', ()=> {
+		// non existing user
+		action.user = 'John'
+		state = Reducer(state, action);
+		expect(state.get('currentUser')).toBe('');
+
+		action.user = 'Amidala'
+		state = Reducer(state, action);
+		expect(state.get('currentUser')).toBe('Amidala');
+	});
+});
+
+describe('NEW_USER', ()=> {
+	let state, action;
+
+	beforeEach(()=> {
+		state = INITIAL_STATE;
+		state = state.set('users', immutable.fromJS([
+			'Leia','Amidala'
+		]));
+		action = {type: 'NEW_USER', user:''}
+	});
+
+	it('should add user and set current user', ()=> {
+		action.user = 'John'
+		state = Reducer(state, action);
+		expect(state.get('currentUser')).toBe('John');
+		expect(state.get('users').size).toBe(3);
+
+	});
+});
