@@ -6,8 +6,7 @@ import LocalStorageMiddleware  from '../src/App/LocalStorageMiddleware';
 import Reducers from '../src/App/Reducer';
 import { createStore, applyMiddleware } from 'redux';
 
-
-describe('LocalStorageMiddleware: changing user', ()=> {
+describe('LocalStorageMiddleware: save data', ()=> {
 	let action = {};
 	let createStoreWithMiddleware;
 	let Store;
@@ -23,8 +22,8 @@ describe('LocalStorageMiddleware: changing user', ()=> {
 		LocalStorageMiddleware.__Rewire__('LocalStorageWrapper', {
 			setItem: (key, value) => {
 				setItemKey = key;
-				setItemValue = value;
-				setItemArr.push([key,value]);
+				setItemValue = JSON.parse(value);
+				setItemArr.push([key,setItemValue]);
 			},
 			removeItem: (key)=> {
 				removeItemKey = key;
@@ -50,14 +49,13 @@ describe('LocalStorageMiddleware: changing user', ()=> {
 		LocalStorageMiddleware.__ResetDependency__('LocalStorageWrapper');
 	});
 
-	it('should set user', ()=> {
+	it('should save when currentUser has changed', ()=> {
 		expect(setItemValue).toBe('');
 		Store.dispatch(Actions.setCurrentUser('Amidala'));
-		expect(setItemKey).toBe('currentUser');
-		expect(setItemValue).toBe('Amidala');
+		expect(setItemArr[1][1].currentUser).toBe('Amidala')
 	});
 
-	it('should not set user if same', ()=> {
+	it('should not save if currentUser has not changed', ()=> {
 		expect(setItemValue).toBe('');
 		Store.dispatch(Actions.setCurrentUser('Leia'));
 		expect(setItemKey).toBe('');
@@ -68,12 +66,16 @@ describe('LocalStorageMiddleware: changing user', ()=> {
 		expect(setItemValue).toBe('');
 		Store.dispatch(Actions.newUser('John'));
 		let keyValue = setItemArr[0]
-		expect(keyValue[0]).toBe('currentUser');
-		expect(keyValue[1]).toBe('John');
+		expect(setItemArr[1][1].currentUser).toBe('John')
+		expect(setItemArr[1][1].users[2]).toBe('John')
+	});
 
-		keyValue = setItemArr[1]
-		expect(keyValue[0]).toBe('users');
-		expect(JSON.parse(keyValue[1])[2]).toBe('John');
+	it('should save when stats update', ()=> {
+		// TODO
+	});
+
+	it('should save when challengeStars update', ()=> {
+		// TODO
 	});
 
 });
