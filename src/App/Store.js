@@ -7,7 +7,14 @@ import LocalStorageFilter from './LocalStorageFilter';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
-// TODO add localStorage data to INITIAL_STATE
+let state = INITIAL_STATE;
+const localData = LocalStorageFilter.getAllDataNeeded();
 
-export const Store = createStoreWithMiddleware(Reducer, INITIAL_STATE);
+Object.keys(localData).forEach( key =>  state = state.set(key, immutable.fromJS(localData[key])));
+if (!state.get('currentUser')){
+
+
+}
+
+export const Store = createStoreWithMiddleware(Reducer, state);
 

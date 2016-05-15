@@ -28,6 +28,9 @@ export default {
 	},
 
 	validatePrefs(prefs){
+		if (!prefs){
+			return false
+		}
 		const checkLength = Object.keys(prefs).length == saveLists.prefs.length;
 		return checkLength && prefs.users && prefs.currentUser && prefs.users.indexOf(prefs.currentUser) != -1;
 	},
@@ -43,6 +46,9 @@ export default {
 	},
 
 	validateUserData(userData){
+		if (!userData){
+			return false
+		}
 		const checkLength = Object.keys(userData).length == saveLists.userData.length;
 		return checkLength && saveLists.userData.every(prop => userData[prop] != undefined);
 	}
