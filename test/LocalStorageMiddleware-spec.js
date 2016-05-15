@@ -52,7 +52,8 @@ describe('LocalStorageMiddleware: save data', ()=> {
 	it('should save when currentUser has changed', ()=> {
 		expect(setItemValue).toBe('');
 		Store.dispatch(Actions.setCurrentUser('Amidala'));
-		expect(setItemArr[1][1].currentUser).toBe('Amidala')
+		expect(setItemArr[0][1].currentUser).toBe('Amidala')
+		expect(setItemArr.length).toBe(1)
 	});
 
 	it('should not save if currentUser has not changed', ()=> {
@@ -60,14 +61,16 @@ describe('LocalStorageMiddleware: save data', ()=> {
 		Store.dispatch(Actions.setCurrentUser('Leia'));
 		expect(setItemKey).toBe('');
 		expect(setItemValue).toBe('');
+		expect(setItemArr.length).toBe(0)
 	});
 
 	it('should change currentUser and set users', ()=> {
 		expect(setItemValue).toBe('');
 		Store.dispatch(Actions.newUser('John'));
 		let keyValue = setItemArr[0]
-		expect(setItemArr[1][1].currentUser).toBe('John')
-		expect(setItemArr[1][1].users[2]).toBe('John')
+		expect(setItemArr[0][1].currentUser).toBe('John')
+		expect(setItemArr[0][1].users[2]).toBe('John')
+		expect(setItemArr.length).toBe(1)
 	});
 
 	it('should save when stats update', ()=> {
