@@ -4,6 +4,7 @@ import Actions from '../Actions';
 import UserNameInput from'./UserNameInput.react.js';
 import {Modal, Button} from 'react-bootstrap';
 import { connect } from 'react-redux';
+import LocalStorageFilter from '../LocalStorageFilter';
 
 const NameSelection = React.createClass({
 	getInitialState() {
@@ -22,7 +23,8 @@ const NameSelection = React.createClass({
 	},
 
 	setCurrentUser(user){
-		this.props.setCurrentUser(user);
+		const userData = LocalStorageFilter.getUserData(user);
+		this.props.setCurrentUser(user, userData);
 		this.props.closeModal();
 	},
 
@@ -70,7 +72,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		closeModal: () => dispatch(Actions.closeModal()),
 		newUser: (user) => dispatch(Actions.newUser(user)),
-		setCurrentUser: (user) => dispatch(Actions.setCurrentUser(user))
+		setCurrentUser: (user, userData) => dispatch(Actions.setCurrentUser(user, userData))
 	}
 };
 export default connect(

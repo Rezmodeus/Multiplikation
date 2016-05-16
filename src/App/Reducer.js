@@ -1,5 +1,6 @@
 import immutable from 'immutable';
 import ReducerLib from './ReducerLib';
+import saveLists from './saveLists';
 export default function (state, action) {
 	switch (action.type) {
 		case 'START_CHALLENGE':
@@ -30,6 +31,7 @@ export default function (state, action) {
 			state = state.setIn(['level', 'ok'], answerOk ? 'ok' : 'remove');
 			const currentChallenge = state.get('currentChallenge');
 			const currentLevelType = currentChallenge.get('levelType');
+			// TODO maybe
 			switch (currentLevelType) {
 				case 'level1':
 					break;
@@ -43,6 +45,7 @@ export default function (state, action) {
 				state = state.setIn(['level', 'grid', action.answer - 1, 'enabled'], false);
 			} else {
 				state = state.setIn(['level', 'currentAnswer'], action.answer);
+				state = state.updateIn(['level', 'errors'], n => n + 1);
 			}
 			let history = state.getIn(['level', 'history']);
 			const equalSign = answerOk ? '=' : '≠';
@@ -57,11 +60,15 @@ export default function (state, action) {
 			state = state.setIn(['level', 'history'], history);
 
 			if (state.getIn(['level', 'currentStep']) == state.getIn(['level', 'problems']).size) {
-				state = state.set('modal', immutable.fromJS({
-					visible: true,
-					type: 'win',
-					text: 'du vann'
-				}));
+				if(state.getIn(['level','errors'])>0){
+					state = state.set('modalType', 'Win1Star');
+					state = state.setIn(['challengeStars',state.get('currentChallengeName')], 1);
+					state = state.set('stars', ReducerLib.calcStars(state));
+				} else {
+					state = state.set('modalType', 'Win2Star');
+					state = state.setIn(['challengeStars',state.get('currentChallengeName')], 2);
+					state = state.set('stars', ReducerLib.calcStars(state));
+				}
 			}
 			return state;
 
@@ -87,6 +94,8 @@ export default function (state, action) {
 		case 'SET_CURRENT_USER':
 			if (state.get('users').includes(action.user)){
 				state = state.set('currentUser', action.user);
+				saveLists.userData.forEach( name => state = state.set(name, immutable.fromJS(action.userData[name])));
+				state = state.set('stars', ReducerLib.calcStars(state));
 			} else {
 				// TODO: toggle user select
 				// no such user

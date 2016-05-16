@@ -1,3 +1,4 @@
+import immutable from 'immutable';
 export default {
 
 	isEnabled(tables, value){
@@ -28,7 +29,7 @@ export default {
 			currentStep: 0,
 			currentAnswer: '',
 			problems: [],
-			score: 0,
+			errors: 0,
 			ok: '',
 			//history:[]
 			history: Array(5).fill({}).map(obj => {
@@ -91,6 +92,10 @@ export default {
 				break;
 		}
 		return level;
+	},
+	// Immutable functions
+	calcStars(state){
+		return state.get('challengeStars').reduce( (sum,val) => sum+val,0);
 	}
-
 }
+

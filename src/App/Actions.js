@@ -47,17 +47,19 @@ export default {
 		}
 	},
 
-	setCurrentUser(user){
+	setCurrentUser(user, userData){
 		return {
 			type: 'SET_CURRENT_USER',
-			user
+			user,
+			userData
 		}
 	},
 
-	newUser(user){
+	newUser(user, userData){
 		return {
 			type: 'NEW_USER',
-			user
+			user,
+			userData
 		}
 	}
 

@@ -20,7 +20,7 @@ export default function ({ getState }) {
 			}, {});
 			LocalStorageWrapper.setItem('prefs', JSON.stringify(saveData));
 		}
-		console.log(action,'prefs',doSave);
+		//console.log(action,'prefs',doSave);
 
 		doSave = usersCheckList.some(prop => !immutable.is(prevState.get(prop), nextState.get(prop)));
 		if (doSave) {
@@ -31,7 +31,7 @@ export default function ({ getState }) {
 			}, {});
 			LocalStorageWrapper.setItem(nextState.get('currentUser'), JSON.stringify(saveData));
 		}
-		console.log(action,'userData',doSave);
+		//console.log(action,'userData',doSave);
 		return returnValue
 	};
 }

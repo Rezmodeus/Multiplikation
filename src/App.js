@@ -28,7 +28,7 @@ const App = React.createClass({
 						<Game {...this.props}/>
 					}
 				</div>
-				<ModalHandler  modalType={this.props.modalType} closeModal={this.props.closeModal} />
+				<ModalHandler modalType={this.props.modalType} closeModal={this.props.closeModal} />
 			</div>
 
 		);
@@ -42,6 +42,7 @@ const mapStateToProps = (state) => {
 		gameState: state.get('gameState'),
 		currentChallenge: state.get('currentChallenge'),
 		challenges: state.get('challenges'),
+		challengeStars: state.get('challengeStars'),
 		level: state.get('level'),
 		stars: state.get('stars'),
 		prevStars: state.get('prevStars'),

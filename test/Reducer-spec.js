@@ -2,6 +2,7 @@ import immutable from 'immutable';
 import expect from 'expect';
 import INITIAL_STATE from '../src/App/INITIAL_STATE'
 import Reducer from '../src/App/Reducer'
+import saveLists from '../src/App/saveLists';
 
 describe('START_CHALLENGE', ()=> {
 
@@ -27,6 +28,17 @@ describe('START_CHALLENGE', ()=> {
 describe('CHECK_ANSWER', ()=> {
 
 	let state, action;
+
+	function runAnswers(answers) {
+		const problems = ['1*1', '1*2', '1*3', '1*4', '1*5', '1*6', '1*7', '1*8', '1*9', '1*10'];
+		let nr = 0;
+		answers.forEach( answer => {
+			action = {type: 'CHECK_ANSWER', problem: problems[nr], answer: answer};
+			state = Reducer(state, action);
+			const a = problems[nr].split('*');
+			nr += (parseInt(a[0]) * parseInt(a[1]) == answer) ? 1 : 0;
+		});
+	}
 
 	beforeEach(()=> {
 		state = INITIAL_STATE;
@@ -86,12 +98,40 @@ describe('CHECK_ANSWER', ()=> {
 		expect(state.getIn(['level', 'history']).last().get('value')).toBe('1×1 = 1');
 	});
 
-	it('should activate modal when level is done', ()=> {
-		state = state.setIn(['level', 'currentStep'],9);
-		action = {type: 'CHECK_ANSWER', problem: '1*10', answer: '10'};
+	it('should activate Win1Star modal when level is completed without errors', ()=> {
 		expect(state.get('modalType')).toBe('');
-		state = Reducer(state, action);
-		expect(state.getIn(['modal', 'visible'])).toNotBe('');
+		runAnswers([1,2,3,4,5,6,7,8,9,9,10]);
+		expect(state.get('modalType')).toBe('Win1Star');
+	});
+
+	it('should activate Win2Star modal when level is completed without errors', ()=> {
+		expect(state.get('modalType')).toBe('');
+		runAnswers([1,2,3,4,5,6,7,8,9,10]);
+		expect(state.get('modalType')).toBe('Win2Star');
+	});
+
+	it('should add 1 stars for ok score to challengeStars', ()=> {
+		runAnswers([1,2,3,4,5,6,7,8,9,9,10]);
+		const stars = state.getIn(['challengeStars','1_1']);
+		expect(stars).toBe(1);
+	});
+
+	it('should add 2 stars for perfect score to challengeStars', ()=> {
+		runAnswers([1,2,3,4,5,6,7,8,9,10]);
+		const stars = state.getIn(['challengeStars','1_1']);
+		expect(stars).toBe(2);
+	});
+
+	it('should add stars when challenge is ok', ()=> {
+		runAnswers([1,2,3,4,5,6,7,8,9,9,10]);
+		const stars = state.get('stars');
+		expect(stars).toBe(1);
+	});
+
+	it('should add stars when challenge is perfect', ()=> {
+		runAnswers([1,2,3,4,5,6,7,8,9,10]);
+		const stars = state.get('stars');
+		expect(stars).toBe(2);
 	});
 
 });
@@ -131,7 +171,7 @@ describe('ADD_STARS', ()=> {
 	});
 });
 
-describe('ADD_STARS', ()=> {
+describe('CLOSE_MODAL', ()=> {
 
 	let state, action;
 
@@ -145,7 +185,7 @@ describe('ADD_STARS', ()=> {
 		state = Reducer(state, action);
 		expect(state.get('modalType')).toBe('');
 
-		state = state.set('modalType','test');
+		state = state.set('modalType', 'test');
 		expect(state.get('modalType')).toBe('test');
 		state = Reducer(state, action);
 		expect(state.get('modalType')).toBe('');
@@ -176,9 +216,9 @@ describe('SET_CURRENT_USER', ()=> {
 	beforeEach(()=> {
 		state = INITIAL_STATE;
 		state = state.set('users', immutable.fromJS([
-			'Leia','Amidala'
+			'Leia', 'Amidala'
 		]));
-		action = {type: 'SET_CURRENT_USER', user:''}
+		action = {type: 'SET_CURRENT_USER', user: '', userData:saveLists.emptyUserData}
 	});
 
 	it('should set user if it exists in users', ()=> {
@@ -199,9 +239,9 @@ describe('NEW_USER', ()=> {
 	beforeEach(()=> {
 		state = INITIAL_STATE;
 		state = state.set('users', immutable.fromJS([
-			'Leia','Amidala'
+			'Leia', 'Amidala'
 		]));
-		action = {type: 'NEW_USER', user:''}
+		action = {type: 'NEW_USER', user: ''}
 	});
 
 	it('should add user and set current user', ()=> {
@@ -218,7 +258,7 @@ describe('SET_MODAL', ()=> {
 
 	beforeEach(()=> {
 		state = INITIAL_STATE;
-		action = {type: 'SET_MODAL', modalType:''}
+		action = {type: 'SET_MODAL', modalType: ''}
 	});
 
 	it('should set NameSelection modal', ()=> {

@@ -1,6 +1,7 @@
 import React from 'react';
 import immutable from 'immutable';
-import {Button,Well } from 'react-bootstrap';
+import {Glyphicon, Button, Well} from 'react-bootstrap';
+import Star from './Star.react';
 
 export default React.createClass({
 
@@ -16,8 +17,12 @@ export default React.createClass({
 				const disabled = this.props.stars < ch.get('requiredStars');
 				const newFlag = this.props.stars >= ch.get('requiredStars') && this.props.prevStars < ch.get('requiredStars');
 				const cls = newFlag ? 'pulsating' : disabled ? 'disabled-btn':'';
+				let stars = this.props.challengeStars.get(ch.get('id')) || 0;
 				return (<Button className={cls} disabled={disabled} key={nr++} bsStyle="info" bsSize="large"
-								onClick={()=>this.props.startChallenge(ch.get('id'))}>Nivå {ch.get('level')}<span className="star"/></Button>
+								onClick={()=>this.props.startChallenge(ch.get('id'))}>Nivå {ch.get('level')}
+						<Star filled={stars > 0}/>
+						<Star filled={(stars - 1) > 0}/>
+					</Button>
 				);
 			});
 		return (

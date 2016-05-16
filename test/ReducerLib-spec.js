@@ -94,3 +94,22 @@ describe('ReducerLib:getGameData', ()=> {
 	});
 
 });
+
+describe('ReducerLib:getGameData', ()=> {
+	let state;
+
+	beforeEach(()=> {
+		state = INITIAL_STATE;
+		state = state.set('challengeStars',immutable.fromJS({
+			'1_1':1,
+			'1_2':2,
+			'2_1':3
+		}));
+	});
+
+	it('should calculate nr of stars', ()=> {
+		let stars = ReducerLib.calcStars(state);
+		expect(stars).toBe(6);
+	});
+});
+

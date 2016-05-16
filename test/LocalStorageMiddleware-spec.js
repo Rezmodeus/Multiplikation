@@ -5,6 +5,7 @@ import Actions from '../src/App/Actions';
 import LocalStorageMiddleware  from '../src/App/LocalStorageMiddleware';
 import Reducers from '../src/App/Reducer';
 import { createStore, applyMiddleware } from 'redux';
+import saveList from '../src/App/saveLists';
 
 describe('LocalStorageMiddleware: save data', ()=> {
 	let action = {};
@@ -51,14 +52,14 @@ describe('LocalStorageMiddleware: save data', ()=> {
 
 	it('should save when currentUser has changed', ()=> {
 		expect(setItemValue).toBe('');
-		Store.dispatch(Actions.setCurrentUser('Amidala'));
+		Store.dispatch(Actions.setCurrentUser('Amidala',saveList.emptyUserData));
 		expect(setItemArr[0][1].currentUser).toBe('Amidala')
 		expect(setItemArr.length).toBe(1)
 	});
 
 	it('should not save if currentUser has not changed', ()=> {
 		expect(setItemValue).toBe('');
-		Store.dispatch(Actions.setCurrentUser('Leia'));
+		Store.dispatch(Actions.setCurrentUser('Leia',saveList.emptyUserData));
 		expect(setItemKey).toBe('');
 		expect(setItemValue).toBe('');
 		expect(setItemArr.length).toBe(0)
@@ -66,7 +67,7 @@ describe('LocalStorageMiddleware: save data', ()=> {
 
 	it('should change currentUser and set users', ()=> {
 		expect(setItemValue).toBe('');
-		Store.dispatch(Actions.newUser('John'));
+		Store.dispatch(Actions.newUser('John',saveList.emptyUserData));
 		let keyValue = setItemArr[0]
 		expect(setItemArr[0][1].currentUser).toBe('John')
 		expect(setItemArr[0][1].users[2]).toBe('John')
