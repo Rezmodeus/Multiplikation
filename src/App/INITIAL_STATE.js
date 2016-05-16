@@ -4,7 +4,7 @@ function getStandardChallenges() {
 	const challengesPerTable = 5;
 	const tableStars = [0, 2, 4, 6, 7];
 	const starsAdd = 4;
-	const challenges = Array(100).fill({})
+	return Array(100).fill({})
 		.map((challenge, index) => {
 			const chNr = index % tableStars.length;
 			const tableNr = Math.floor(index / challengesPerTable);
@@ -18,7 +18,6 @@ function getStandardChallenges() {
 			}
 
 		});
-	return challenges;
 }
 
 export default immutable.fromJS({
@@ -31,11 +30,7 @@ export default immutable.fromJS({
 	challengeStars:{},
 	users:[],
 	currentUser:'',
-	modal: {
-		visible: false,
-		type:'',
-		text:''
-	},
+	modalType:'',
 	challenges: getStandardChallenges(),
 	level: {}
 });

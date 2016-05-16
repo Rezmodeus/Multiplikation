@@ -42,7 +42,8 @@ export default {
 
 	setModal(modalType){
 		return {
-			type: 'SET_MODAL'
+			type: 'SET_MODAL',
+			modalType
 		}
 	},
 

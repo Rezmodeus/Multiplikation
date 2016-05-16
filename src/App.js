@@ -45,7 +45,7 @@ const mapStateToProps = (state) => {
 		level: state.get('level'),
 		stars: state.get('stars'),
 		prevStars: state.get('prevStars'),
-		modal: state.get('modal')
+		modalType: state.get('modal')
 	}
 };
 

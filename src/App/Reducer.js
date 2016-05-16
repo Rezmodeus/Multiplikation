@@ -71,13 +71,11 @@ export default function (state, action) {
 			return state;
 
 		case 'CLOSE_MODAL':
-			state = state.setIn(['modal', 'visible'], false);
+			state = state.set('modalType', '');
 			return state;
 
 		case 'SET_MODAL':
-			let modalObj = {
-				type: action.modalType
-			};
+			state = state.set('modalType',action.modalType);
 			switch(action.modalType){
 				case 'NameSelection':
 					break;

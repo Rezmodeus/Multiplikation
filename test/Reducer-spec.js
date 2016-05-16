@@ -89,9 +89,9 @@ describe('CHECK_ANSWER', ()=> {
 	it('should activate modal when level is done', ()=> {
 		state = state.setIn(['level', 'currentStep'],9);
 		action = {type: 'CHECK_ANSWER', problem: '1*10', answer: '10'};
-		expect(state.getIn(['modal', 'visible'])).toBe(false);
+		expect(state.get('modalType')).toBe('');
 		state = Reducer(state, action);
-		expect(state.getIn(['modal', 'visible'])).toBe(true);
+		expect(state.getIn(['modal', 'visible'])).toNotBe('');
 	});
 
 });
@@ -141,14 +141,14 @@ describe('ADD_STARS', ()=> {
 	});
 
 	it('should close modal', ()=> {
-		expect(state.getIn(['modal', 'visible'])).toBe(false);
+		expect(state.get('modalType')).toBe('');
 		state = Reducer(state, action);
-		expect(state.getIn(['modal', 'visible'])).toBe(false);
+		expect(state.get('modalType')).toBe('');
 
-		state = state.setIn(['modal','visible'],true);
-		expect(state.getIn(['modal', 'visible'])).toBe(true);
+		state = state.set('modalType','test');
+		expect(state.get('modalType')).toBe('test');
 		state = Reducer(state, action);
-		expect(state.getIn(['modal', 'visible'])).toBe(false);
+		expect(state.get('modalType')).toBe('');
 	});
 });
 describe('RESTART_CHALLENGE', ()=> {
@@ -222,12 +222,9 @@ describe('SET_MODAL', ()=> {
 	});
 
 	it('should set NameSelection modal', ()=> {
-		action.type = 'NameSelection';
-		expect(modal.get('visible')).toBe(false);
-
+		action.modalType = 'NameSelection';
+		expect(state.get('modalType')).toBe('');
 		state = Reducer(state, action);
-		const modal = state.get('modal');
-		expect(modal.get('visible')).toBe(true);
-		expect(modal.get('type')).toBe('NameSelection')
+		expect(state.get('modalType')).toBe('NameSelection')
 	});
 });

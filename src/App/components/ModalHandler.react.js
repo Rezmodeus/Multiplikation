@@ -5,8 +5,8 @@ import NameSelection from './NameSelection.react';
 
 export default React.createClass({
 
-	getContent(type){
-		switch (type) {
+	getContent(){
+		switch (this.props.modalType) {
 			case 'NameSelection':
 				return (<NameSelection />)
 				break;
@@ -16,11 +16,10 @@ export default React.createClass({
 	},
 
 	render() {
-		const modal = this.props.modal;
-		const visible = modal.get('visible');
+		const modalType = this.props.modalType;
 		let modalInstance = null;
-		if (visible) {
-			modalInstance = this.getContent(modal.get('type'));
+		if (modalType) {
+			modalInstance = this.getContent();
 		}
 		return (
 			<div>
