@@ -63,11 +63,11 @@ export default function (state, action) {
 				if(state.getIn(['level','errors'])>0){
 					state = state.set('modalType', 'Win1Star');
 					state = state.setIn(['challengeStars',state.get('currentChallengeName')], 1);
-					state = state.set('stars', ReducerLib.calcStars(state));
+					state = ReducerLib.updateStars(state);
 				} else {
 					state = state.set('modalType', 'Win2Star');
 					state = state.setIn(['challengeStars',state.get('currentChallengeName')], 2);
-					state = state.set('stars', ReducerLib.calcStars(state));
+					state = ReducerLib.updateStars(state);
 				}
 			}
 			return state;

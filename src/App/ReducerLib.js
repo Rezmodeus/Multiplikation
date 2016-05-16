@@ -96,6 +96,12 @@ export default {
 	// Immutable functions
 	calcStars(state){
 		return state.get('challengeStars').reduce( (sum,val) => sum+val,0);
+	},
+	updateStars(state){
+		state = state.set('prevStars', state.get('stars'));
+		const starSum =state.get('challengeStars').reduce( (sum,val) => sum+val,0);
+		state = state.set('stars',starSum);
+		return state;
 	}
 }
 
