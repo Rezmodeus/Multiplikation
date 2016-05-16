@@ -212,3 +212,22 @@ describe('NEW_USER', ()=> {
 
 	});
 });
+
+describe('SET_MODAL', ()=> {
+	let state, action;
+
+	beforeEach(()=> {
+		state = INITIAL_STATE;
+		action = {type: 'SET_MODAL', modalType:''}
+	});
+
+	it('should set NameSelection modal', ()=> {
+		action.type = 'NameSelection';
+		expect(modal.get('visible')).toBe(false);
+
+		state = Reducer(state, action);
+		const modal = state.get('modal');
+		expect(modal.get('visible')).toBe(true);
+		expect(modal.get('type')).toBe('NameSelection')
+	});
+});

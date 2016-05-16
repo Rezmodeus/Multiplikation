@@ -18,8 +18,9 @@ export default function ({ getState }) {
 				obj[prop] = (typeof imProp == 'string') || (typeof imProp == 'number') ? imProp : imProp.toJS();
 				return obj;
 			}, {});
-			LocalStorageWrapper.setItem(nextState.get('currentUser'), JSON.stringify(saveData));
+			LocalStorageWrapper.setItem('prefs', JSON.stringify(saveData));
 		}
+		console.log(action,'prefs',doSave);
 
 		doSave = usersCheckList.some(prop => !immutable.is(prevState.get(prop), nextState.get(prop)));
 		if (doSave) {
@@ -28,9 +29,10 @@ export default function ({ getState }) {
 				obj[prop] = (typeof imProp == 'string') || (typeof imProp == 'number') ? imProp : imProp.toJS();
 				return obj;
 			}, {});
-			LocalStorageWrapper.setItem('prefs', JSON.stringify(saveData));
-			return returnValue
+			LocalStorageWrapper.setItem(nextState.get('currentUser'), JSON.stringify(saveData));
 		}
+		console.log(action,'userData',doSave);
+		return returnValue
 	};
 }
 

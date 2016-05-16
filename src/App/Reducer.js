@@ -74,6 +74,18 @@ export default function (state, action) {
 			state = state.setIn(['modal', 'visible'], false);
 			return state;
 
+		case 'SET_MODAL':
+			let modalObj = {
+				type: action.modalType
+			};
+			switch(action.modalType){
+				case 'NameSelection':
+					break;
+				default:
+					break;
+			}
+			return state;
+
 		case 'SET_CURRENT_USER':
 			if (state.get('users').includes(action.user)){
 				state = state.set('currentUser', action.user);

@@ -40,6 +40,12 @@ export default {
 		}
 	},
 
+	setModal(modalType){
+		return {
+			type: 'SET_MODAL'
+		}
+	},
+
 	setCurrentUser(user){
 		return {
 			type: 'SET_CURRENT_USER',
