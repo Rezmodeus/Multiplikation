@@ -10,7 +10,7 @@ export default React.createClass({
 				<Button bsStyle="success" bsSize="small" onClick={()=>this.addStars(2)}>add
 					star {this.props.stars}</Button>
 				<h3>{this.props.currentUser}</h3>
-				<Button className="restart-btn" bsStyle="danger" bsSize="small" onClick={()=>console.log('asdf')}>Byta användare</Button>
+				<Button className="restart-btn" bsStyle="danger" bsSize="small" onClick={()=>this.props.setModal('NameSelection')}>Byt användare</Button>
 			</div>
 		)
 	}

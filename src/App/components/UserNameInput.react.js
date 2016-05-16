@@ -10,6 +10,7 @@ export default React.createClass({
 		let val = event.target.value;
 		val = val.replace(/[^a-zA-Z]/, '')
 		this.refs.textArea.value = val;
+		this.props.setText(val);
 	},
 
 	onKeyDown (event) {
@@ -28,6 +29,7 @@ export default React.createClass({
 		return (
 			<textarea
 				className="message-composer form-control"
+				placeholder="Skriv in ett nytt namn här"
 				ref="textArea"
 				rows="1"
 				name="message"

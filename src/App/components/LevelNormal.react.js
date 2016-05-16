@@ -3,7 +3,6 @@ import immutable from 'immutable';
 import {Button, Glyphicon} from 'react-bootstrap';
 import Grid100 from './Grid100.react';
 import History from './History.react';
-import Tick from './Tick.react';
 
 export default React.createClass({
 
@@ -27,4 +26,3 @@ export default React.createClass({
 	}
 });
 
-//{item.get('ok') ? <Tick/> : <span className="cross"/> }

@@ -9,7 +9,6 @@ export default React.createClass({
 		switch (this.props.modalType) {
 			case 'NameSelection':
 				return (<NameSelection />)
-				break;
 			default:
 				return (<div>error</div>)
 		}
