@@ -1,16 +1,15 @@
 import React from 'react';
 import immutable from 'immutable';
-import {Button} from 'react-bootstrap';
 import Star from './Star.react';
 
 export default React.createClass({
 
 	render() {
 		return (
-			<div className="navigation-container">
-				<h3>{this.props.stars} <Star filled={true}/></h3>
-				<h3>{this.props.currentUser}</h3>
-				<Button className="restart-btn" bsStyle="danger" bsSize="small" onClick={()=>this.props.setModal('NameSelection')}>Byt användare</Button>
+			<div className="start-header">
+				<h2>{this.props.stars} <Star filled={true}/></h2>
+				<h2>{this.props.currentUser}</h2>
+				<button className="challenge-btn" bsSize="small" onClick={()=>this.props.setModal('NameSelection')}>Byt användare</button>
 			</div>
 		)
 	}

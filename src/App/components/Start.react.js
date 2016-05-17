@@ -1,6 +1,6 @@
 import React from 'react';
 import immutable from 'immutable';
-import {Glyphicon, Button, Well} from 'react-bootstrap';
+import {Glyphicon} from 'react-bootstrap';
 import Star from './Star.react';
 
 export default React.createClass({
@@ -16,13 +16,13 @@ export default React.createClass({
 			.map(([k,ch]) => {
 				const disabled = this.props.stars < ch.get('requiredStars');
 				const newFlag = this.props.stars >= ch.get('requiredStars') && this.props.prevStars < ch.get('requiredStars');
-				const cls = newFlag ? 'pulsating' : disabled ? 'disabled-btn' : '';
+				const cls = newFlag ? 'challenge-btn pulsating' : disabled ? 'challenge-btn disabled' : 'challenge-btn';
 				let stars = this.props.challengeStars.get(ch.get('id')) || 0;
-				return (<Button className={cls} disabled={disabled} key={nr++} bsStyle="info" bsSize="large"
+				return (<button className={cls} disabled={disabled} key={nr++} bsStyle="info" bsSize="large"
 								onClick={()=>this.props.startChallenge(ch.get('id'))}>
 						Nivå {ch.get('level')}   <Star filled={stars > 0}/><Star filled={(stars - 1) > 0}
 					/>
-					</Button>
+					</button>
 				);
 			});
 		return (
@@ -34,12 +34,6 @@ export default React.createClass({
 	},
 
 	render() {
-		let nr = 0;
-		const challenges = this.props.challenges.map(challenge => {
-			const unlocked = challenge.get('unlocked');
-			return <Button disabled={!unlocked} key={nr++} bsStyle="info" bsSize="small"
-						   onClick={()=>console.log()}>{challenge.get('name')}</Button>
-		});
 
 		return (
 			<div className="challenge-container">

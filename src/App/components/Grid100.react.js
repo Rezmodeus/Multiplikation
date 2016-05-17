@@ -1,6 +1,5 @@
 import React from 'react';
 import immutable from 'immutable';
-import {Button} from 'react-bootstrap';
 
 export default React.createClass({
 
@@ -8,21 +7,21 @@ export default React.createClass({
 		let nr = 0;
 		const cells = this.props.level.get('grid').valueSeq().map(cell => {
 			return (
-				<Button
-					className={`grid-button ${!cell.get('enabled')?'disabled-btn':''}`}
+				<button
+					className={`grid-btn challenge-btn ${!cell.get('enabled')?'disabled':''}`}
 					key={nr++}
 					disabled={!cell.get('enabled')} bsStyle="success" bsSize="large"
 					onClick={()=>this.props.checkAnswer(cell.get('value'),cell.get('btnNr'))}>
 					{(cell.get('value') + '').replace('*', '×')}
-				</Button>);
+				</button>);
 		});
-		let grid = cells;
 
 		return (
 			<div className="grid-container">
-				{grid}
+				{cells}
 			</div>
 		)
 	}
 });
 
+//className={`grid-button ${!cell.get('enabled')?'disabled-btn':''}`}

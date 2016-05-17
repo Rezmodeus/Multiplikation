@@ -1,6 +1,5 @@
 import React from 'react';
 import immutable from 'immutable';
-import {Button} from 'react-bootstrap';
 import GameHeader from './GameHeader.react.js';
 import StartHeader from './StartHeader.react';
 
