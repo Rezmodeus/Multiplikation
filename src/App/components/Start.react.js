@@ -6,22 +6,22 @@ import Star from './Star.react';
 export default React.createClass({
 
 	getChallengesWell(tableNr){
-		const testCh = this.props.challenges.find( ch => ch.get('id') == tableNr+'_1');
-		if (this.props.stars < testCh.get('requiredStars')){
+		const testCh = this.props.challenges.find(ch => ch.get('id') == tableNr + '_1');
+		if (this.props.stars < testCh.get('requiredStars')) {
 			return null;
 		}
 		let nr = 0;
 		const challenges = this.props.challenges.entrySeq()
-			.filter( ([key,challenge]) => challenge.get('id').split('_')[0] == tableNr)
-			.map( ([k,ch]) => {
+			.filter(([key,challenge]) => challenge.get('id').split('_')[0] == tableNr)
+			.map(([k,ch]) => {
 				const disabled = this.props.stars < ch.get('requiredStars');
 				const newFlag = this.props.stars >= ch.get('requiredStars') && this.props.prevStars < ch.get('requiredStars');
-				const cls = newFlag ? 'pulsating' : disabled ? 'disabled-btn':'';
+				const cls = newFlag ? 'pulsating' : disabled ? 'disabled-btn' : '';
 				let stars = this.props.challengeStars.get(ch.get('id')) || 0;
 				return (<Button className={cls} disabled={disabled} key={nr++} bsStyle="info" bsSize="large"
-								onClick={()=>this.props.startChallenge(ch.get('id'))}>Nivå {ch.get('level')}
-						<Star filled={stars > 0}/>
-						<Star filled={(stars - 1) > 0}/>
+								onClick={()=>this.props.startChallenge(ch.get('id'))}>
+						Nivå {ch.get('level')}   <Star filled={stars > 0}/><Star filled={(stars - 1) > 0}
+					/>
 					</Button>
 				);
 			});

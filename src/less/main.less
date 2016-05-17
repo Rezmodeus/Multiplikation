@@ -28,13 +28,13 @@ body {
   justify-content: flex-start;
 }
 
+.grid-container {
+  width: @answer-button-calc-size * 11;
+}
+
 .grid-button {
   width: @answer-button-size;
   margin: @answer-button-margin;
-}
-
-.grid-container {
-  width: @answer-button-calc-size * 11;
 }
 
 .disabled-btn {
@@ -82,21 +82,6 @@ body {
   justify-content: flex-start;
 }
 
-.back-btn {
-}
-
-.restart-btn {
-}
-
-@keyframes entry {
-  0% {
-    transform: scale(2.0);
-  }
-  100% {
-    transform: scale(1.0);
-  }
-}
-
 .challenge-container {
   padding: 0;
   width: 500px;
@@ -112,6 +97,27 @@ body {
 
 .problem-text {
   font-size: 4em;
+}
+.star {
+  color: #555;
+  &.filled{
+    color: yellow;
+  }
+}
+
+.back-btn {
+}
+
+.restart-btn {
+}
+
+@keyframes entry {
+  0% {
+    transform: scale(2.0);
+  }
+  100% {
+    transform: scale(1.0);
+  }
 }
 
 .keyframes(@name; @arguments) {
