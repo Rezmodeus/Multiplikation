@@ -44,6 +44,7 @@ export default {
 			case 'level1':
 				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
+						btnNr:index,
 						value: index + 1,
 						enabled: this.isEnabled(tables, index + 1)
 					}
@@ -54,6 +55,7 @@ export default {
 			case 'level2':
 				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
+						btnNr:index,
 						value: index + 1,
 						enabled: true
 					}
@@ -64,6 +66,7 @@ export default {
 			case 'level3':
 				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
+						btnNr:index,
 						value: index + 1,
 						enabled: this.isEnabled(tables, index + 1)
 					}
@@ -74,6 +77,7 @@ export default {
 			case 'level4':
 				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
+						btnNr:index,
 						value: index + 1,
 						enabled: true
 					}
@@ -84,6 +88,7 @@ export default {
 			case 'level5':
 				level.grid = this.getProblemsRandomRotated(tables).map((problem, index) => {
 					return {
+						btnNr:index,
 						value: problem,
 						enabled: true
 					}

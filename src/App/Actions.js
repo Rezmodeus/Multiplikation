@@ -19,11 +19,12 @@ export default {
 		}
 	},
 
-	checkAnswer(problem, answer){
+	checkAnswer(problem, answer, btnNr = 0){
 		return {
 			type: 'CHECK_ANSWER',
 			problem,
-			answer
+			answer,
+			btnNr
 		}
 	},
 

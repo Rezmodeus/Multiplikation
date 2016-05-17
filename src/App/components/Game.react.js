@@ -4,20 +4,20 @@ import {Button} from 'react-bootstrap';
 import LevelNormal from './LevelNormal.react.js';
 
 export default React.createClass({
-	checkAnswer(answer){
-		this.props.checkAnswer(this.props.level.getIn(['problems', this.props.level.get('currentStep')]), answer);
-	},
-
-	checkAnswerReverse(answer){
-		this.props.checkAnswer(answer, this.props.level.getIn(['problems', this.props.level.get('currentStep')]));
+	checkAnswer(answer, btnNr){
+		if (typeof answer === 'number') {
+			this.props.checkAnswer(this.props.level.getIn(['problems', this.props.level.get('currentStep')]), answer, btnNr);
+		} else {
+			// reverse
+			this.props.checkAnswer(answer, this.props.level.getIn(['problems', this.props.level.get('currentStep')]), btnNr);
+		}
 	},
 
 	render() {
 		let {checkAnswer, ...rest} = this.props;
-		const check = this.props.currentChallenge.get('levelType') == 'level5' ? this.checkAnswerReverse : this.checkAnswer;
 		const payload = {
 			...rest,
-			checkAnswer: check
+			checkAnswer: this.checkAnswer
 		};
 
 		return (

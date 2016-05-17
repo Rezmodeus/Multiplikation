@@ -42,7 +42,8 @@ export default function (state, action) {
 				if (state.getIn(['level', 'currentStep']) < state.getIn(['level', 'problems']).size) {
 					state = state.updateIn(['level', 'currentStep'], n => n + 1);
 				}
-				state = state.setIn(['level', 'grid', action.answer - 1, 'enabled'], false);
+				state = state.setIn(['level', 'grid', action.btnNr, 'enabled'], false);
+				//state = state.setIn(['level', 'grid', action.answer - 1, 'enabled'], false);
 			} else {
 				state = state.setIn(['level', 'currentAnswer'], action.answer);
 				state = state.updateIn(['level', 'errors'], n => n + 1);

@@ -55,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
 		startChallenge: (challenge)=>dispatch(Actions.startChallenge(challenge)),
 		restartChallenge: ()=>dispatch(Actions.restartChallenge()),
 		backToStart: (challenge)=>dispatch(Actions.backToStart(challenge)),
-		checkAnswer: (problem, answer) => dispatch(Actions.checkAnswer(problem, answer)),
+		checkAnswer: (problem, answer, btnNr) => dispatch(Actions.checkAnswer(problem, answer, btnNr)),
 		addStars: (nr) => dispatch(Actions.addStars(nr)),
 		closeModal: () => dispatch(Actions.closeModal()),
 		setModal: (modalType)=> dispatch(Actions.setModal(modalType))

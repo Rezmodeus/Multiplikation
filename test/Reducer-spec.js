@@ -33,7 +33,7 @@ describe('CHECK_ANSWER', ()=> {
 		const problems = ['1*1', '1*2', '1*3', '1*4', '1*5', '1*6', '1*7', '1*8', '1*9', '1*10'];
 		let nr = 0;
 		answers.forEach( answer => {
-			action = {type: 'CHECK_ANSWER', problem: problems[nr], answer: answer};
+			action = {type: 'CHECK_ANSWER', problem: problems[nr], answer: answer, btnNr:nr};
 			state = Reducer(state, action);
 			const a = problems[nr].split('*');
 			nr += (parseInt(a[0]) * parseInt(a[1]) == answer) ? 1 : 0;
@@ -44,7 +44,7 @@ describe('CHECK_ANSWER', ()=> {
 		state = INITIAL_STATE;
 		action = {type: 'START_CHALLENGE', challenge: '1_1'};
 		state = Reducer(state, action);
-		action = {type: 'CHECK_ANSWER', problem: '1*1', answer: '1'}
+		action = {type: 'CHECK_ANSWER', problem: '1*1', answer: '1', btnNr:0}
 	});
 
 	it('should set ok', ()=> {

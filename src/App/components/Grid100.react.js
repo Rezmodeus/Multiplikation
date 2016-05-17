@@ -12,7 +12,7 @@ export default React.createClass({
 					className={`grid-button ${!cell.get('enabled')?'disabled-btn':''}`}
 					key={nr++}
 					disabled={!cell.get('enabled')} bsStyle="success" bsSize="large"
-					onClick={()=>this.props.checkAnswer(cell.get('value'))}>
+					onClick={()=>this.props.checkAnswer(cell.get('value'),cell.get('btnNr'))}>
 					{(cell.get('value') + '').replace('*', '×')}
 				</Button>);
 		});
