@@ -21,6 +21,9 @@ export default {
 		const a = problem.split('*');
 		return parseInt(a[0]) * parseInt(a[1]) == answer;
 	},
+	getKey(){
+		Math.floor(Math.random() * 10000)
+	},
 
 	getLevelData(gameLevel, tables){
 		const maxGridValues = tables.reduce((prev, current) => Math.max(prev, current * 10), 100);
@@ -36,7 +39,7 @@ export default {
 				return {
 					value: '\u00a0',
 					ok: false,
-					key: Math.floor(Math.random() * 1000)
+					key: this.getKey()
 				}
 			})
 		};
@@ -44,7 +47,7 @@ export default {
 			case 'level1':
 				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
-						btnNr:index,
+						btnNr: index,
 						value: index + 1,
 						enabled: this.isEnabled(tables, index + 1)
 					}
@@ -55,7 +58,7 @@ export default {
 			case 'level2':
 				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
-						btnNr:index,
+						btnNr: index,
 						value: index + 1,
 						enabled: true
 					}
@@ -66,7 +69,7 @@ export default {
 			case 'level3':
 				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
-						btnNr:index,
+						btnNr: index,
 						value: index + 1,
 						enabled: this.isEnabled(tables, index + 1)
 					}
@@ -77,7 +80,7 @@ export default {
 			case 'level4':
 				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
 					return {
-						btnNr:index,
+						btnNr: index,
 						value: index + 1,
 						enabled: true
 					}
@@ -88,7 +91,7 @@ export default {
 			case 'level5':
 				level.grid = this.getProblemsRandomRotated(tables).map((problem, index) => {
 					return {
-						btnNr:index,
+						btnNr: index,
 						value: problem,
 						enabled: true
 					}
@@ -100,12 +103,13 @@ export default {
 	},
 	// Immutable functions
 	calcStars(state){
-		return state.get('challengeStars').reduce( (sum,val) => sum+val,0);
+		return state.get('challengeStars').reduce((sum, val) => sum + val, 0);
 	},
+
 	updateStars(state){
 		state = state.set('prevStars', state.get('stars'));
-		const starSum =state.get('challengeStars').reduce( (sum,val) => sum+val,0);
-		state = state.set('stars',starSum);
+		const starSum = state.get('challengeStars').reduce((sum, val) => sum + val, 0);
+		state = state.set('stars', starSum);
 		return state;
 	}
 }

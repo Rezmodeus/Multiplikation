@@ -7,7 +7,7 @@ export default React.createClass({
 		const history = this.props.history.valueSeq().map(item => {
 			const cls = item.get('ok') ? 'history-item ok' : 'history-item wrong';
 			return (
-				<div key={item.get('key')} className={cls} >
+				<div key={item.get('key')} className={cls}>
 					{item.get('value')}
 				</div>
 			)

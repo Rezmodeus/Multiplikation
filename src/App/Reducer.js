@@ -53,7 +53,7 @@ export default function (state, action) {
 			history = history.push(immutable.fromJS({
 				value: `${action.problem.replace('*', '×')} ${equalSign} ${action.answer}`,
 				ok: answerOk,
-				key: Math.floor(Math.random() * 1000)
+				key: ReducerLib.getKey()
 			}));
 			if (history.size >= 5) {
 				history = history.shift();
@@ -61,13 +61,16 @@ export default function (state, action) {
 			state = state.setIn(['level', 'history'], history);
 
 			if (state.getIn(['level', 'currentStep']) == state.getIn(['level', 'problems']).size) {
-				if(state.getIn(['level','errors'])>0){
+				if (state.getIn(['level', 'errors']) > 0) {
 					state = state.set('modalType', 'Win1Star');
-					state = state.setIn(['challengeStars',state.get('currentChallengeName')], 1);
+					const chStar = state.getIn(['challengeStars', state.get('currentChallengeName')]);
+					if (!chStar || chStar != 2) {
+						state = state.setIn(['challengeStars', state.get('currentChallengeName')], 1);
+					}
 					state = ReducerLib.updateStars(state);
 				} else {
 					state = state.set('modalType', 'Win2Star');
-					state = state.setIn(['challengeStars',state.get('currentChallengeName')], 2);
+					state = state.setIn(['challengeStars', state.get('currentChallengeName')], 2);
 					state = ReducerLib.updateStars(state);
 				}
 			}
@@ -83,8 +86,8 @@ export default function (state, action) {
 			return state;
 
 		case 'SET_MODAL':
-			state = state.set('modalType',action.modalType);
-			switch(action.modalType){
+			state = state.set('modalType', action.modalType);
+			switch (action.modalType) {
 				case 'NameSelection':
 					break;
 				default:
@@ -93,9 +96,9 @@ export default function (state, action) {
 			return state;
 
 		case 'SET_CURRENT_USER':
-			if (state.get('users').includes(action.user)){
+			if (state.get('users').includes(action.user)) {
 				state = state.set('currentUser', action.user);
-				saveLists.userData.forEach( name => state = state.set(name, immutable.fromJS(action.userData[name])));
+				saveLists.userData.forEach(name => state = state.set(name, immutable.fromJS(action.userData[name])));
 				state = state.set('stars', ReducerLib.calcStars(state));
 			} else {
 				// TODO: toggle user select
@@ -106,8 +109,8 @@ export default function (state, action) {
 		case 'NEW_USER':
 			let users = state.get('users');
 			users = users.push(action.user);
-			state = state.set('users',users);
-			state = state.set('currentUser',action.user);
+			state = state.set('users', users);
+			state = state.set('currentUser', action.user);
 			return state;
 
 		default:
