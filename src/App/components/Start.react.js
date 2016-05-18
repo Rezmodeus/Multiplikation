@@ -16,9 +16,9 @@ export default React.createClass({
 			.map(([k,ch]) => {
 				const disabled = this.props.stars < ch.get('requiredStars');
 				const newFlag = this.props.stars >= ch.get('requiredStars') && this.props.prevStars < ch.get('requiredStars');
-				const cls = newFlag ? 'challenge-btn pulsating' : disabled ? 'challenge-btn disabled' : 'challenge-btn';
+				const cls = newFlag ? 'standard-btn pulsating' : disabled ? 'standard-btn disabled' : 'standard-btn';
 				let stars = this.props.challengeStars.get(ch.get('id')) || 0;
-				return (<button className={cls} disabled={disabled} key={nr++} bsStyle="info" bsSize="large"
+				return (<button className={cls} disabled={disabled} key={nr++}
 								onClick={()=>this.props.startChallenge(ch.get('id'))}>
 						Nivå {ch.get('level')}   <Star filled={stars > 0}/><Star filled={(stars - 1) > 0}
 					/>

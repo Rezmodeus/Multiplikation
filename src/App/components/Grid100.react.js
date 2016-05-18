@@ -8,9 +8,9 @@ export default React.createClass({
 		const cells = this.props.level.get('grid').valueSeq().map(cell => {
 			return (
 				<button
-					className={`grid-btn challenge-btn ${!cell.get('enabled')?'disabled':''}`}
+					className={`grid-btn standard-btn ${!cell.get('enabled')?'disabled':''}`}
 					key={nr++}
-					disabled={!cell.get('enabled')} bsStyle="success" bsSize="large"
+					disabled={!cell.get('enabled')}
 					onClick={()=>this.props.checkAnswer(cell.get('value'),cell.get('btnNr'))}>
 					{(cell.get('value') + '').replace('*', '×')}
 				</button>);

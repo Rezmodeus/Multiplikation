@@ -1,6 +1,5 @@
 import React from 'react';
 import immutable from 'immutable';
-import {Button} from 'react-bootstrap';
 import LevelNormal from './LevelNormal.react.js';
 
 export default React.createClass({

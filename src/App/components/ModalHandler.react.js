@@ -1,6 +1,6 @@
 import React from 'react';
 import immutable from 'immutable';
-import {Modal, Button} from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
 import NameSelection from './NameSelection.react';
 import Win1Star from './Win1Star.react';
 import Win2Star from './Win2Star.react';

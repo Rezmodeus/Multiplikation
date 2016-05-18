@@ -1,6 +1,6 @@
 import React from 'react';
 import immutable from 'immutable';
-import {Button, Glyphicon} from 'react-bootstrap';
+import {Glyphicon} from 'react-bootstrap';
 import Grid100 from './Grid100.react';
 import History from './History.react';
 
