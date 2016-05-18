@@ -2,10 +2,10 @@ import React from 'react';
 import immutable from 'immutable';
 import Actions from '../Actions';
 import {Modal, Button} from 'react-bootstrap';
-import Star from './Star.react'
+import BigStar from './BigStar.react'
 import { connect } from 'react-redux';
 
-const NameSelection = React.createClass({
+const Win1Star = React.createClass({
 
 	closeModal(){
 		this.props.backToStart();
@@ -20,12 +20,12 @@ const NameSelection = React.createClass({
 						<h2>Bra!</h2>
 					</Modal.Header>
 
-					<Modal.Body>
-					<Star filled={true}/>
+					<Modal.Body className="star-container">
+						<BigStar/>
 					</Modal.Body>
 
 					<Modal.Footer>
-						Om du får alla rätt får du 2 stjärnor
+						<h3>Om du klarar det utan att göra fel får du 2 stjärnor</h3>
 						<button className="standard-btn" onClick={this.closeModal}>Fortsätt</button>
 					</Modal.Footer>
 				</Modal>
@@ -52,5 +52,5 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(NameSelection)
+)(Win1Star)
 

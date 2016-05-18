@@ -2,9 +2,10 @@ import React from 'react';
 import immutable from 'immutable';
 import Actions from '../Actions';
 import {Modal, Button} from 'react-bootstrap';
+import BigStar from './BigStar.react'
 import { connect } from 'react-redux';
 
-const NameSelection = React.createClass({
+const Win2Star = React.createClass({
 
 	closeModal(){
 		this.props.backToStart();
@@ -16,15 +17,16 @@ const NameSelection = React.createClass({
 			<div className="static-modal">
 				<Modal show={true} onClick={this.closeModal}>
 					<Modal.Header>
-						<Modal.Title>Perfekt!</Modal.Title>
+						<h2>Utmärkt!</h2>
 					</Modal.Header>
 
-					<Modal.Body>
-						yay
+					<Modal.Body className="star-container">
+						<BigStar/>
+						<BigStar/>
 					</Modal.Body>
 
 					<Modal.Footer>
-						<Button bsStyle="success" bsSize="small" onClick={this.closeModal}>Fortsätt</Button>
+						<button className="standard-btn" onClick={this.closeModal}>Fortsätt</button>
 					</Modal.Footer>
 				</Modal>
 			</div>
@@ -50,5 +52,5 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(NameSelection)
+)(Win2Star)
 

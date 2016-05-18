@@ -41,7 +41,7 @@ body {
   margin: @answer-button-margin;
 }
 
-.modal-header{
+.modal-header {
   color: white;
   text-align: center;
   background-color: #00BCD4;
@@ -50,13 +50,13 @@ body {
   border-bottom: none;
 }
 
-.modal-body{
+.modal-body {
   color: white;
   padding-top: 10px;
   background-color: #0097A7;
 }
 
-.modal-footer{
+.modal-footer {
   text-align: center;
   color: white;
   background-color: #0097A7;
@@ -65,15 +65,15 @@ body {
   border-top: none;
 }
 
-.name-input{
+.name-input {
   background-color: white;
   color: #768d87;
-  width:200px;
+  width: 200px;
 
 }
 
 .name-btn {
-  width:200px;
+  width: 200px;
 }
 
 .standard-btn {
@@ -149,6 +149,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
 }
+
 h2 {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -188,6 +189,40 @@ h2 {
   &.filled {
     color: yellow;
   }
+}
+.star-container {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.big-star {
+  color: yellow;
+  font-size: 8.2em;
+  animation: zoomIn 2000ms infinite ease;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0.5;
+    transform: scale3d(.5, .5, .5);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+
+  100% {
+    opacity: 0.5;
+    transform: scale3d(.5, .5, .5);
+  }
+}
+
+.zoomIn {
+  animation-name: zoomIn;
 }
 
 .back-btn {

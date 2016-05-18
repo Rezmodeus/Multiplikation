@@ -18,7 +18,8 @@ const App = React.createClass({
 			gameState: this.props.gameState,
 			setModal: this.props.setModal,
 			stepForward: this.props.stepForward,
-			resetChallenges: this.props.resetChallenges
+			resetChallenges: this.props.resetChallenges,
+			debug:false
 		};
 
 		return (
