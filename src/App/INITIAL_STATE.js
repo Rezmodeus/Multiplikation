@@ -3,7 +3,7 @@ import immutable from 'immutable';
 function getStandardChallenges() {
 	const challengesPerTable = 5;
 	const tableStars = [0, 2, 4, 6, 7];
-	const starsAdd = 4;
+	const starsAdd = 6;
 	return Array(100).fill({})
 		.map((challenge, index) => {
 			const chNr = index % tableStars.length;

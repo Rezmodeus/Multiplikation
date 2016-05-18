@@ -10,6 +10,8 @@ export default React.createClass({
 				<h2>{this.props.stars} <Star filled={true}/></h2>
 				<h2>{this.props.currentUser}</h2>
 				<button className="standard-btn" onClick={()=>this.props.setModal('NameSelection')}>Byt användare</button>
+				<button className="standard-btn" onClick={this.props.stepForward}>step</button>
+				<button className="standard-btn" onClick={this.props.resetChallenges}>reset</button>
 			</div>
 		)
 	}

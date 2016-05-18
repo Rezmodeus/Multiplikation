@@ -34,6 +34,17 @@ export default {
 			nr
 		}
 	},
+	resetChallenges(){
+		return {
+			type: 'RESET_CHALLENGES'
+		}
+	},
+
+	stepForward(){
+		return {
+			type: 'STEP_FORWARD'
+		}
+	},
 
 	closeModal(){
 		return {

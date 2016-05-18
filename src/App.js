@@ -16,8 +16,11 @@ const App = React.createClass({
 			restartChallenge: this.props.restartChallenge,
 			stars: this.props.stars,
 			gameState: this.props.gameState,
-			setModal: this.props.setModal
+			setModal: this.props.setModal,
+			stepForward: this.props.stepForward,
+			resetChallenges: this.props.resetChallenges
 		};
+
 		return (
 			<div>
 				<Header {...headerPayload}/>
@@ -58,8 +61,9 @@ const mapDispatchToProps = (dispatch) => {
 		checkAnswer: (problem, answer, btnNr) => dispatch(Actions.checkAnswer(problem, answer, btnNr)),
 		addStars: (nr) => dispatch(Actions.addStars(nr)),
 		closeModal: () => dispatch(Actions.closeModal()),
-		setModal: (modalType)=> dispatch(Actions.setModal(modalType))
-
+		setModal: (modalType)=> dispatch(Actions.setModal(modalType)),
+		stepForward: () => dispatch(Actions.stepForward()),
+		resetChallenges: () => dispatch(Actions.resetChallenges())
 	}
 };
 export default connect(

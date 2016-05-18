@@ -81,6 +81,37 @@ export default function (state, action) {
 			state = state.update('stars', n => n + action.nr);
 			return state;
 
+		case 'RESET_CHALLENGES':
+			state = state.set('challengeStars', immutable.fromJS({}));
+			state = ReducerLib.updateStars(state);
+			return state;
+		case 'STEP_FORWARD':
+
+			let nbrStrings = [];
+			for (let i = 1; i <= 10; i++) {
+				for (let j = 1; j <= 5; j++) {
+					nbrStrings.push(i + '_' + j);
+				}
+			}
+
+			let nextKey = nbrStrings.find(str => !state.getIn(['challengeStars', str]) || state.getIn(['challengeStars', str]) < 2);
+			if (state.getIn(['challengeStars', nextKey])) {
+				state = state.updateIn(['challengeStars', nextKey], n => n + 1);
+			} else {
+				state = state.setIn(['challengeStars', nextKey], 1);
+			}
+
+			nextKey = nbrStrings.find(str => !state.getIn(['challengeStars', str]) || state.getIn(['challengeStars', str]) < 2);
+			if (state.getIn(['challengeStars', nextKey])) {
+				state = state.updateIn(['challengeStars', nextKey], n => n + 1);
+			} else {
+				state = state.setIn(['challengeStars', nextKey], 1);
+			}
+
+			state = ReducerLib.updateStars(state);
+
+			return state;
+
 		case 'CLOSE_MODAL':
 			state = state.set('modalType', '');
 			return state;
