@@ -28,7 +28,7 @@ export default React.createClass({
 
 		return (
 			<textarea
-				className="message-composer form-control"
+				className="name-input"
 				placeholder="Skriv in ett nytt namn här"
 				ref="textArea"
 				rows="1"

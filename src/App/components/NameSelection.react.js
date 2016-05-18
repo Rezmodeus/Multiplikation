@@ -31,27 +31,28 @@ const NameSelection = React.createClass({
 	render() {
 		let nr = 0;
 		const users = this.props.users.map(user =>
-			<Button key={nr++} bsStyle="success" bsSize="small" onClick={()=>this.setCurrentUser(user)}>{user}</Button>
+			<button key={nr++} className="name-btn standard-btn" onClick={()=>this.setCurrentUser(user)}>{user}</button>
 		);
 
 		return (
 			<div className="static-modal">
 				<Modal show={true} onClick={this.props.closeModal}>
 					<Modal.Header>
-						<Modal.Title>Hej, vad heter du?</Modal.Title>
+						<h2>Hej, vad heter du?</h2>
 					</Modal.Header>
 
-					<Modal.Body>
+					<Modal.Body className="game-container">
 						{users}
+						Eller skriv in ett nytt namn
 						<UserNameInput setText={this.setText}/>
 						{this.state.text ?
-							<Button bsStyle="success" bsSize="small" onClick={this.newUser}>Skapa ny användare</Button>
+							<button className="name-btn standard-btn" onClick={this.newUser}>Skapa ny användare</button>
 							:null
 						}
 					</Modal.Body>
 
 					<Modal.Footer>
-						<Button bsStyle="primary" onClick={this.props.closeModal}>Stäng</Button>
+						<button className="name-btn standard-btn" onClick={this.props.closeModal}>Tillbaks</button>
 					</Modal.Footer>
 				</Modal>
 			</div>

@@ -9,12 +9,12 @@ body {
 }
 
 .header {
-  height: 60px;
+  height: 50px;
 }
 
 .app-container {
   position: absolute;
-  top: 60px;
+  top: 50px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -39,6 +39,41 @@ body {
 .grid-btn {
   width: @answer-button-size;
   margin: @answer-button-margin;
+}
+
+.modal-header{
+  color: white;
+  text-align: center;
+  background-color: #00BCD4;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: none;
+}
+
+.modal-body{
+  color: white;
+  padding-top: 10px;
+  background-color: #0097A7;
+}
+
+.modal-footer{
+  text-align: center;
+  color: white;
+  background-color: #0097A7;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: none;
+}
+
+.name-input{
+  background-color: white;
+  color: #768d87;
+  width:200px;
+
+}
+
+.name-btn {
+  width:200px;
 }
 
 .standard-btn {
@@ -114,7 +149,9 @@ body {
   align-items: flex-start;
   justify-content: space-between;
 }
-h2{
+h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
   color: white;
 }
 
