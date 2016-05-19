@@ -22,7 +22,7 @@ export default {
 		return parseInt(a[0]) * parseInt(a[1]) == answer;
 	},
 	getKey(){
-		Math.floor(Math.random() * 10000)
+		return Math.floor(Math.random() * 10000)
 	},
 
 	getLevelData(gameLevel, tables){
