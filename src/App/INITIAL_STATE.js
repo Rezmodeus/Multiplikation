@@ -32,5 +32,6 @@ export default immutable.fromJS({
 	currentUser:'',
 	modalType:'',
 	challenges: getStandardChallenges(),
-	level: {}
+	level: {},
+	debug: false
 });

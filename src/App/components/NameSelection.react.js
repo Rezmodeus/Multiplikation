@@ -18,7 +18,11 @@ const NameSelection = React.createClass({
 	},
 
 	newUser(){
-		this.props.newUser(this.state.text);
+		if (this.state.text=='debug'){
+			this.props.toggleDebug();
+		} else {
+			this.props.newUser(this.state.text);
+		}
 		this.props.closeModal();
 	},
 
@@ -43,7 +47,7 @@ const NameSelection = React.createClass({
 
 					<Modal.Body className="game-container">
 						{users}
-						Eller skriv in ett nytt namn
+						Skriv in ett nytt namn
 						<UserNameInput setText={this.setText}/>
 						{this.state.text ?
 							<button className="name-btn standard-btn" onClick={this.newUser}>Skapa ny användare</button>
@@ -52,7 +56,11 @@ const NameSelection = React.createClass({
 					</Modal.Body>
 
 					<Modal.Footer>
-						<button className="name-btn standard-btn" onClick={this.props.closeModal}>Tillbaks</button>
+						{this.props.users.size > 0 ?
+							<button className="name-btn standard-btn" onClick={this.props.closeModal}>Tillbaks</button>
+							:
+							null
+						}
 					</Modal.Footer>
 				</Modal>
 			</div>
@@ -73,7 +81,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		closeModal: () => dispatch(Actions.closeModal()),
 		newUser: (user) => dispatch(Actions.newUser(user)),
-		setCurrentUser: (user, userData) => dispatch(Actions.setCurrentUser(user, userData))
+		setCurrentUser: (user, userData) => dispatch(Actions.setCurrentUser(user, userData)),
+		toggleDebug: () => dispatch(Actions.toggleDebug())
 	}
 };
 export default connect(

@@ -19,7 +19,7 @@ const App = React.createClass({
 			setModal: this.props.setModal,
 			stepForward: this.props.stepForward,
 			resetChallenges: this.props.resetChallenges,
-			debug:false
+			debug:this.props.debug
 		};
 
 		return (
@@ -50,7 +50,8 @@ const mapStateToProps = (state) => {
 		level: state.get('level'),
 		stars: state.get('stars'),
 		prevStars: state.get('prevStars'),
-		modalType: state.get('modalType')
+		modalType: state.get('modalType'),
+		debug: state.get('debug')
 	}
 };
 

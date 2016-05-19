@@ -249,8 +249,18 @@ describe('NEW_USER', ()=> {
 		state = Reducer(state, action);
 		expect(state.get('currentUser')).toBe('John');
 		expect(state.get('users').size).toBe(3);
-
 	});
+
+	it('should reset userData', ()=> {
+		state = state.set('challengeStars', immutable.fromJS({'1_1':1}));
+		state = state.set('prevStars', 10);
+		expect (state.get('challengeStars').size).toBe(1);
+		action.user = 'John'
+		state = Reducer(state, action);
+		expect (state.get('challengeStars').size).toBe(0);
+		expect (state.get('prevStars')).toBe(0);
+	});
+
 });
 
 describe('SET_MODAL', ()=> {

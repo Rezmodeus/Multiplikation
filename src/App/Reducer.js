@@ -142,8 +142,13 @@ export default function (state, action) {
 			users = users.push(action.user);
 			state = state.set('users', users);
 			state = state.set('currentUser', action.user);
+			state = state.set('stars',0);
+			saveLists.userData.forEach(name => state = state.set(name, immutable.fromJS(saveLists.emptyUserData[name])));
 			return state;
 
+		case 'TOGGLE_DEBUG':
+			state = state.update('debug',n => !n);
+			return state;
 		default:
 			return state;
 

@@ -34,6 +34,7 @@ export default {
 			nr
 		}
 	},
+
 	resetChallenges(){
 		return {
 			type: 'RESET_CHALLENGES'
@@ -72,6 +73,12 @@ export default {
 			type: 'NEW_USER',
 			user,
 			userData
+		}
+	},
+
+	toggleDebug() {
+		return {
+			type: 'TOGGLE_DEBUG'
 		}
 	}
 

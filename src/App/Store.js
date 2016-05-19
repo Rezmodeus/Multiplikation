@@ -12,12 +12,15 @@ import createLogger from 'redux-logger';
 let state = INITIAL_STATE;
 const localData = LocalStorageFilter.getAllDataNeeded();
 
-Object.keys(localData).forEach( key =>  state = state.set(key, immutable.fromJS(localData[key])));
-if (!state.get('currentUser')){
-	state = state.setIn(['modal','visible'], true);
-	state = state.setIn(['modal','type'], 'NameSelection');
+Object.keys(localData).forEach(key => state = state.set(key, immutable.fromJS(localData[key])));
+if (!state.get('currentUser')) {
+	state = state.setIn(['modal', 'visible'], true);
+	state = state.setIn(['modal', 'type'], 'NameSelection');
 }
 state = state.set('stars', ReducerLib.calcStars(state));
+if (state.get('users').size == 0) {
+	state = state.set('modalType','NameSelection');
+}
 
 const logger = createLogger({
 	timestamp: true,
