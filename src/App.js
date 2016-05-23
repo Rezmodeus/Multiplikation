@@ -11,7 +11,6 @@ const App = React.createClass({
 	render() {
 		const headerPayload = {
 			currentUser: this.props.currentUser,
-			addStars: this.props.addStars,
 			backToStart: this.props.backToStart,
 			restartChallenge: this.props.restartChallenge,
 			stars: this.props.stars,
@@ -19,6 +18,7 @@ const App = React.createClass({
 			setModal: this.props.setModal,
 			stepForward: this.props.stepForward,
 			resetChallenges: this.props.resetChallenges,
+			checkAnswer: this.props.checkAnswer,
 			debug:this.props.debug
 		};
 
@@ -51,6 +51,7 @@ const mapStateToProps = (state) => {
 		stars: state.get('stars'),
 		prevStars: state.get('prevStars'),
 		modalType: state.get('modalType'),
+		challengeContainers: state.get('challengeContainers'),
 		debug: state.get('debug')
 	}
 };
@@ -61,7 +62,6 @@ const mapDispatchToProps = (dispatch) => {
 		restartChallenge: ()=>dispatch(Actions.restartChallenge()),
 		backToStart: (challenge)=>dispatch(Actions.backToStart(challenge)),
 		checkAnswer: (problem, answer, btnNr) => dispatch(Actions.checkAnswer(problem, answer, btnNr)),
-		addStars: (nr) => dispatch(Actions.addStars(nr)),
 		closeModal: () => dispatch(Actions.closeModal()),
 		setModal: (modalType)=> dispatch(Actions.setModal(modalType)),
 		stepForward: () => dispatch(Actions.stepForward()),

@@ -4,7 +4,7 @@ import saveLists from './saveLists';
 export default function (state, action) {
 	switch (action.type) {
 		case 'START_CHALLENGE':
-			const ch = state.get('challenges').find(challenge => challenge.get('id') == action.challenge);
+			const ch = state.getIn(['challenges',action.challenge]);
 			const tables = ch.get('tables').toJS();
 			const data = ReducerLib.getLevelData('level' + ch.get('level'), tables);
 			state = state.set('currentChallenge', ch);
@@ -15,7 +15,7 @@ export default function (state, action) {
 
 		case 'RESTART_CHALLENGE':
 			const challengeName = state.get('currentChallengeName');
-			const previousCh = state.get('challenges').find(challenge => challenge.get('id') == challengeName);
+			const previousCh = state.getIn(['challenges',challengeName]);
 			const previousTables = previousCh.get('tables').toJS();
 			const previousData = ReducerLib.getLevelData('level' + previousCh.get('level'), previousTables);
 			state = state.set('level', immutable.fromJS(previousData));
@@ -26,7 +26,6 @@ export default function (state, action) {
 			return state;
 
 		case 'CHECK_ANSWER':
-			state = state.update('nr', nr => nr + 1);
 			const answerOk = ReducerLib.checkAnswer(action.problem, action.answer);
 			state = state.setIn(['level', 'ok'], answerOk ? 'ok' : 'remove');
 			const currentChallenge = state.get('currentChallenge');
@@ -76,32 +75,20 @@ export default function (state, action) {
 			}
 			return state;
 
-		case 'ADD_STARS':
-			state = state.set('prevStars', state.get('stars'));
-			state = state.update('stars', n => n + action.nr);
-			return state;
-
 		case 'RESET_CHALLENGES':
 			state = state.set('challengeStars', immutable.fromJS({}));
 			state = ReducerLib.updateStars(state);
 			return state;
-		case 'STEP_FORWARD':
 
+		case 'STEP_FORWARD':
 			let nbrStrings = [];
-			for (let i = 1; i <= 10; i++) {
+			for (let i = 1; i <= 12; i++) {
 				for (let j = 1; j <= 5; j++) {
 					nbrStrings.push(i + '_' + j);
 				}
 			}
 
 			let nextKey = nbrStrings.find(str => !state.getIn(['challengeStars', str]) || state.getIn(['challengeStars', str]) < 2);
-			if (state.getIn(['challengeStars', nextKey])) {
-				state = state.updateIn(['challengeStars', nextKey], n => n + 1);
-			} else {
-				state = state.setIn(['challengeStars', nextKey], 1);
-			}
-
-			nextKey = nbrStrings.find(str => !state.getIn(['challengeStars', str]) || state.getIn(['challengeStars', str]) < 2);
 			if (state.getIn(['challengeStars', nextKey])) {
 				state = state.updateIn(['challengeStars', nextKey], n => n + 1);
 			} else {

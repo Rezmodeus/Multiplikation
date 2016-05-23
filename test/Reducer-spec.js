@@ -136,41 +136,6 @@ describe('CHECK_ANSWER', ()=> {
 
 });
 
-describe('ADD_STARS', ()=> {
-
-	let state, action;
-
-	beforeEach(()=> {
-		state = INITIAL_STATE;
-		action = {type: 'ADD_STARS', nr: 1}
-	});
-
-	it('should add star', ()=> {
-		expect(state.get('stars')).toBe(0);
-		expect(state.get('prevStars')).toBe(0);
-		state = Reducer(state, action);
-
-		expect(state.get('prevStars')).toBe(0);
-		expect(state.get('stars')).toBe(1);
-
-		state = Reducer(state, action);
-		expect(state.get('prevStars')).toBe(1);
-	});
-
-	it('should add stars', ()=> {
-		expect(state.get('stars')).toBe(0);
-		expect(state.get('prevStars')).toBe(0);
-		action.nr = 2;
-		state = Reducer(state, action);
-
-		expect(state.get('prevStars')).toBe(0);
-		expect(state.get('stars')).toBe(2);
-
-		state = Reducer(state, action);
-		expect(state.get('prevStars')).toBe(2);
-	});
-});
-
 describe('CLOSE_MODAL', ()=> {
 
 	let state, action;

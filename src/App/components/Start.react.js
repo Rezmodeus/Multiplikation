@@ -3,51 +3,67 @@ import immutable from 'immutable';
 import {Glyphicon} from 'react-bootstrap';
 import Star from './Star.react';
 
+const REQUIRED_STARS = 7;
 export default React.createClass({
 
-	getChallengesWell(tableNr){
-		const testCh = this.props.challenges.find(ch => ch.get('id') == tableNr + '_1');
-		if (this.props.stars < testCh.get('requiredStars')) {
-			return null;
-		}
+	getChallengeBoxes(){
+		// create container content
+		let prevStars = 10;
+		const cc = this.props.challengeContainers.map(container => {
+			const name = container.get('name');
+			let starSum = 0;
+			const challenges = container.get('challenges').map(challenge => {
+				let ch = this.props.challenges.get(challenge);
+				const stars = this.props.challengeStars.get(challenge) || 0;
+				starSum += stars;
+				ch = ch.set('stars', stars);
+				//ch = ch.set('id', challenge);
+				return ch;
+			});
+			const visible = prevStars >= REQUIRED_STARS;
+			prevStars = starSum;
+			return immutable.Map({
+				visible,
+				starSum,
+				name,
+				challenges
+			})
+		});
 		let nr = 0;
-		const challenges = this.props.challenges.entrySeq()
-			.filter(([key,challenge]) => challenge.get('id').split('_')[0] == tableNr)
-			.map(([k,ch]) => {
-				const disabled = this.props.stars < ch.get('requiredStars');
-				const newFlag = this.props.stars >= ch.get('requiredStars') && this.props.prevStars < ch.get('requiredStars');
+		const content = cc.takeWhile(container => container.get('visible')).map(container => {
+			let starSum = 0;
+			const challenges = container.get('challenges').map(challenge => {
+				const stars = challenge.get('stars');
+				const disabled = starSum < challenge.get('requiredStars');
+				const newFlag = !disabled && stars==0;
 				const cls = newFlag ? 'standard-btn pulsating' : disabled ? 'standard-btn disabled' : 'standard-btn';
-				let stars = this.props.challengeStars.get(ch.get('id')) || 0;
+				starSum += stars;
 				return (<button className={cls} disabled={disabled} key={nr++}
-								onClick={()=>this.props.startChallenge(ch.get('id'))}>
-						Nivå {ch.get('level')}   <Star filled={stars > 0}/><Star filled={(stars - 1) > 0}
+								onClick={()=>this.props.startChallenge(challenge.get('id'))}>
+						Nivå {challenge.get('level')} <Star filled={stars > 0}/><Star filled={(stars - 1) > 0}
 					/>
 					</button>
 				);
 			});
-		return (
-			<div className="table-container">
-				<h2>Tabell {tableNr}</h2>
-				{challenges}
-			</div>
-		)
+			return (
+				<div className="table-container" key={nr++}>
+					<h2>{container.get('name')}</h2>
+					{challenges}
+				</div>
+			)
+
+		});
+		return content;
+
 	},
 
 	render() {
-
 		return (
 			<div className="challenge-container">
-				{this.getChallengesWell(1)}
-				{this.getChallengesWell(2)}
-				{this.getChallengesWell(3)}
-				{this.getChallengesWell(4)}
-				{this.getChallengesWell(5)}
-				{this.getChallengesWell(6)}
-				{this.getChallengesWell(7)}
-				{this.getChallengesWell(8)}
-				{this.getChallengesWell(9)}
-				{this.getChallengesWell(10)}
+				{this.getChallengeBoxes()}
+
 			</div>
 		)
 	}
 });
+

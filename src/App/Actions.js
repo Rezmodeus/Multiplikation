@@ -28,13 +28,6 @@ export default {
 		}
 	},
 
-	addStars(nr){
-		return {
-			type: 'ADD_STARS',
-			nr
-		}
-	},
-
 	resetChallenges(){
 		return {
 			type: 'RESET_CHALLENGES'

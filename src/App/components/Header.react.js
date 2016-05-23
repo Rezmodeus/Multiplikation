@@ -5,9 +5,6 @@ import StartHeader from './StartHeader.react';
 
 export default React.createClass({
 
-	addStars(nr){
-		this.props.addStars(nr);
-	},
 	render() {
 		return (
 			<div className="header">
