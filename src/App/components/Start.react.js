@@ -35,7 +35,7 @@ export default React.createClass({
 			const challenges = container.get('challenges').map(challenge => {
 				const stars = challenge.get('stars');
 				const disabled = starSum < challenge.get('requiredStars');
-				const newFlag = !disabled && stars==0;
+				const newFlag = !disabled && stars == 0;
 				const cls = newFlag ? 'standard-btn pulsating' : disabled ? 'standard-btn disabled' : 'standard-btn';
 				starSum += stars;
 				return (<button className={cls} disabled={disabled} key={nr++}
@@ -57,11 +57,46 @@ export default React.createClass({
 
 	},
 
+	getBonusBox(){
+		const container = this.props.bonusContainer;
+		const chName = container.getIn(['challenges', 0]);
+		if (this.props.stars < this.props.challenges.getIn([chName, 'requiredStars'])) {
+			return null;
+		}
+		const challengeNames = ['Lätt', 'Medel', 'Svår', 'Maraton', 'Maraton 2'];
+		const name = container.get('name');
+		let nr = 0;
+		let nameIndex = 0;
+		console.log(1)
+		const challenges = container.get('challenges').map(ch => {
+			const challenge = this.props.challenges.get(ch);
+			console.log(challenge)
+			const stars = challenge.get('stars');
+			const disabled = this.props.stars < challenge.get('requiredStars');
+			const newFlag = !disabled && stars == 0;
+			let cls = newFlag ? 'standard-btn pulsating' : disabled ? 'standard-btn disabled' : 'standard-btn';
+			cls += ' fixed-width';
+			return (<button className={cls} disabled={disabled} key={nr++}
+							onClick={()=>this.props.startChallenge(challenge.get('id'))}>{challengeNames[nameIndex++]}{'  '}
+					<Star filled={stars > 0}/><Star filled={(stars - 1) > 0}
+					/>
+				</button>
+			);
+		});
+
+		return (
+			<div className="table-container" key={nr++}>
+				<h2>{name}</h2>
+				{challenges}
+			</div>
+		)
+	},
+
 	render() {
 		return (
 			<div className="challenge-container">
 				{this.getChallengeBoxes()}
-
+				{this.getBonusBox()}
 			</div>
 		)
 	}

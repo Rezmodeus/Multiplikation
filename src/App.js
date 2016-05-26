@@ -53,6 +53,7 @@ const mapStateToProps = (state) => {
 		prevStars: state.get('prevStars'),
 		modalType: state.get('modalType'),
 		challengeContainers: state.get('challengeContainers'),
+		bonusContainer: state.get('bonusContainer'),
 		debug: state.get('debug')
 	}
 };

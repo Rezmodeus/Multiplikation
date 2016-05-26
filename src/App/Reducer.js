@@ -29,8 +29,9 @@ export default function (state, action) {
 			const answerOk = ReducerLib.checkAnswer(action.problem, action.answer);
 			state = state.setIn(['level', 'ok'], answerOk ? 'ok' : 'remove');
 			const currentChallenge = state.get('currentChallenge');
-			const currentLevelType = currentChallenge.get('levelType');
-			const isBonusLevel = currentLevelType == 'level6' || currentLevelType == 'level7' || currentLevelType == 'level8';
+			const currentLevelType = currentChallenge.get('level');
+			const isBonusLevel = currentLevelType == 6 || currentLevelType == 7 || currentLevelType == 8;
+			console.log('bonus',isBonusLevel, currentLevelType )
 
 			if (answerOk) {
 				if (state.getIn(['level', 'currentStep']) < state.getIn(['level', 'problems']).size) {
@@ -47,8 +48,10 @@ export default function (state, action) {
 					const nrOfProblems = state.getIn(['level', 'problems']).size;
 					if(currentStep >= (nrOfProblems/2)){
 						// 1 star
+						state = state.set('modalType', 'Bonus1Star');
 					} else {
-						// o stars
+						// 0 stars
+						state = state.set('modalType', 'Bonus0Star');
 					}
 				}
 			}
@@ -74,7 +77,7 @@ export default function (state, action) {
 					state = ReducerLib.updateStars(state);
 				} else {
 					if (isBonusLevel){
-						state = state.set('modalType', 'Win2Star');
+						state = state.set('modalType', 'Bonus2Star');
 					} else {
 						state = state.set('modalType', 'Win2Star');
 					}

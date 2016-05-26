@@ -77,6 +77,10 @@ export default immutable.fromJS({
 
 	},
 	challengeContainers: getChallengeContainers(),
+	bonusContainer: {
+		name: 'Bonus',
+		challenges:['b_1','b_2','b_3','b_4','b_5']
+	},
 	level: {},
 	debug: false
 });

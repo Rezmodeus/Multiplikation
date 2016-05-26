@@ -49,7 +49,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		backToStart: () => dispatch(Actions.backToStart()),
-		closeModal: () => dispatch(Actions.closeModal())
+		closeModal: () => dispatch(Actions.closeModal()),
+		restartChallenge: ()=>dispatch(Actions.restartChallenge())
 	}
 };
 

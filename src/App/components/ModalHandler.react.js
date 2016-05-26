@@ -5,6 +5,10 @@ import NameSelection from './NameSelection.react';
 import Win1Star from './modals/Win1Star.react.js';
 import Win2Star from './modals/Win2Star.react.js';
 
+import Bonus0Star from './modals/Bonus0Star.react';
+import Bonus1Star from './modals/Bonus2Star.react';
+import Bonus2Star  from './modals/Bonus2Star.react';
+
 export default React.createClass({
 
 	getContent(){
@@ -15,6 +19,12 @@ export default React.createClass({
 				return (<Win1Star />);
 			case 'Win2Star':
 				return (<Win2Star />);
+			case 'Bonus0Star':
+				return (<Bonus0Star  />);
+			case 'Bonus1Star':
+				return (<Bonus1Star  />);
+			case 'Bonus2Star':
+				return (<Bonus2Star  />);
 			default:
 				return (<div>error</div>)
 		}
