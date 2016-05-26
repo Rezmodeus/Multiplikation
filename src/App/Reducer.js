@@ -30,22 +30,27 @@ export default function (state, action) {
 			state = state.setIn(['level', 'ok'], answerOk ? 'ok' : 'remove');
 			const currentChallenge = state.get('currentChallenge');
 			const currentLevelType = currentChallenge.get('levelType');
-			// TODO maybe
-			switch (currentLevelType) {
-				case 'level1':
-					break;
-				case 'level2':
-					break;
-			}
+			const isBonusLevel = currentLevelType == 'level6' || currentLevelType == 'level7' || currentLevelType == 'level8';
+
 			if (answerOk) {
 				if (state.getIn(['level', 'currentStep']) < state.getIn(['level', 'problems']).size) {
 					state = state.updateIn(['level', 'currentStep'], n => n + 1);
 				}
-				state = state.setIn(['level', 'grid', action.btnNr, 'enabled'], false);
-				//state = state.setIn(['level', 'grid', action.answer - 1, 'enabled'], false);
+				if (!isBonusLevel){
+					state = state.setIn(['level', 'grid', action.btnNr, 'enabled'], false);
+				}
 			} else {
 				state = state.setIn(['level', 'currentAnswer'], action.answer);
 				state = state.updateIn(['level', 'errors'], n => n + 1);
+				if (isBonusLevel){
+					const currentStep = state.getIn(['level', 'currentStep']);
+					const nrOfProblems = state.getIn(['level', 'problems']).size;
+					if(currentStep >= (nrOfProblems/2)){
+						// 1 star
+					} else {
+						// o stars
+					}
+				}
 			}
 			let history = state.getIn(['level', 'history']);
 			const equalSign = answerOk ? '=' : '≠';
@@ -68,7 +73,11 @@ export default function (state, action) {
 					}
 					state = ReducerLib.updateStars(state);
 				} else {
-					state = state.set('modalType', 'Win2Star');
+					if (isBonusLevel){
+						state = state.set('modalType', 'Win2Star');
+					} else {
+						state = state.set('modalType', 'Win2Star');
+					}
 					state = state.setIn(['challengeStars', state.get('currentChallengeName')], 2);
 					state = ReducerLib.updateStars(state);
 				}

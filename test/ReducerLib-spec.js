@@ -93,6 +93,36 @@ describe('ReducerLib:getGameData', ()=> {
 		expect(level.grid.length).toBe(110);
 	});
 
+	it('should handle bonus level6', ()=> {
+		let level = ReducerLib.getLevelData('level6', [1, 2, 10]);
+		expect(level.problems.length).toBe(20);
+		expect(level.grid.length).toBe(100);
+
+		level = ReducerLib.getLevelData('level6', [1, 2, 10, 5]);
+		expect(level.problems.length).toBe(20);
+		expect(level.grid.length).toBe(100);
+	});
+
+	it('should handle bonus level7', ()=> {
+		let level = ReducerLib.getLevelData('level7', [1, 2, 3, 4]);
+		expect(level.problems.length).toBe(30);
+		expect(level.grid.length).toBe(100);
+
+		level = ReducerLib.getLevelData('level7', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+		expect(level.problems.length).toBe(30);
+		expect(level.grid.length).toBe(120);
+	});
+
+	it('should handle bonus level8', ()=> {
+		let level = ReducerLib.getLevelData('level8', [1, 2, 3, 4, 5, 6]);
+		expect(level.problems.length).toBe(50);
+		expect(level.grid.length).toBe(100);
+
+		level = ReducerLib.getLevelData('level8', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+		expect(level.problems.length).toBe(50);
+		expect(level.grid.length).toBe(120);
+	});
+
 });
 
 describe('ReducerLib:getGameData', ()=> {

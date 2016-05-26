@@ -2,8 +2,8 @@ import React from 'react';
 import immutable from 'immutable';
 import {Modal} from 'react-bootstrap';
 import NameSelection from './NameSelection.react';
-import Win1Star from './Win1Star.react';
-import Win2Star from './Win2Star.react';
+import Win1Star from './modals/Win1Star.react.js';
+import Win2Star from './modals/Win2Star.react.js';
 
 export default React.createClass({
 

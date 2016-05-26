@@ -1,8 +1,8 @@
 import React from 'react';
 import immutable from 'immutable';
-import Actions from '../Actions';
+import Actions from '../../Actions';
 import {Modal, Button} from 'react-bootstrap';
-import BigStar from './BigStar.react'
+import BigStar from './../BigStar.react.js'
 import { connect } from 'react-redux';
 
 const Win1Star = React.createClass({

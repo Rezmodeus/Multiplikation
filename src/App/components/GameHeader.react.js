@@ -12,6 +12,9 @@ export default React.createClass({
 	},
 
 	render() {
+		const currentStep =  this.props.level.get('currentStep');
+		const nrOfProblems  =  this.props.level.get('problems').size;
+		const progress = currentStep+' av ' + nrOfProblems;
 		const debugButtons = this.props.debug ?
 			(
 				<div>
@@ -23,7 +26,7 @@ export default React.createClass({
 		return (
 			<div className="start-header">
 				<button className="standard-btn" onClick={()=>this.props.backToStart()}>Tillbaks</button>
-				<h2>{this.props.currentUser}</h2>
+				<h2>{this.props.currentUser} {progress}</h2>
 				<button className="standard-btn" onClick={()=>this.props.restartChallenge()}>Starta om</button>
 				{debugButtons}
 			</div>

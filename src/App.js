@@ -19,6 +19,7 @@ const App = React.createClass({
 			stepForward: this.props.stepForward,
 			resetChallenges: this.props.resetChallenges,
 			checkAnswer: this.props.checkAnswer,
+			level:this.props.level,
 			debug:this.props.debug
 		};
 

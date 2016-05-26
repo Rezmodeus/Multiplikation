@@ -1,32 +1,36 @@
 import React from 'react';
 import immutable from 'immutable';
-import Actions from '../Actions';
+import Actions from '../../Actions';
 import {Modal, Button} from 'react-bootstrap';
-import BigStar from './BigStar.react'
 import { connect } from 'react-redux';
 
-const Win2Star = React.createClass({
+const Win1Star = React.createClass({
 
-	closeModal(){
+	backToStart(){
 		this.props.backToStart();
+		this.props.closeModal();
+	},
+
+	restart(){
+		this.props.restartChallenge();
 		this.props.closeModal();
 	},
 
 	render() {
 		return (
 			<div className="static-modal">
-				<Modal show={true} onClick={this.closeModal}>
+				<Modal show={true} onClick={this.backToStart}>
 					<Modal.Header>
-						<h2>Utmärkt!</h2>
+						<h2>Tyvärr!</h2>
 					</Modal.Header>
 
 					<Modal.Body className="star-container">
-						<BigStar/>
-						<BigStar/>
 					</Modal.Body>
 
 					<Modal.Footer>
-						<button className="standard-btn" onClick={this.closeModal}>Fortsätt</button>
+						<h3>Får du hälften rätt får du 1 stjärna</h3>
+						<button className="standard-btn" onClick={this.backToStart}>Fortsätt</button>
+						<button className="standard-btn" onClick={this.restart}>Prova igen</button>
 					</Modal.Footer>
 				</Modal>
 			</div>
@@ -52,5 +56,5 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Win2Star)
+)(Win1Star)
 

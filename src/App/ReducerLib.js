@@ -98,6 +98,40 @@ export default {
 				});
 				level.problems = tables.reduce((arr, table) => arr.concat(Array(10).fill(0).map((dummy, index) => (index + 1) * table)), []);
 				break;
+
+			case 'level6':
+				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
+					return {
+						btnNr: index,
+						value: index + 1,
+						enabled: true
+					}
+				});
+				level.problems = this.getProblemsRandomRotated(tables).slice(0,20);
+				break;
+
+			case 'level7':
+				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
+					return {
+						btnNr: index,
+						value: index + 1,
+						enabled: true
+					}
+				});
+				level.problems = this.getProblemsRandomRotated(tables).slice(0,30);
+				break;
+
+			case 'level8':
+				level.grid = Array(maxGridValues).fill({}).map((obj, index) => {
+					return {
+						btnNr: index,
+						value: index + 1,
+						enabled: true
+					}
+				});
+				level.problems = this.getProblemsRandomRotated(tables).slice(0,50);
+				break;
+
 		}
 		return level;
 	},
