@@ -1,12 +1,12 @@
 import React from 'react';
 import immutable from 'immutable';
 import {Modal} from 'react-bootstrap';
-import NameSelection from './NameSelection.react';
+import NameSelection from './modals/NameSelection.react.js';
 import Win1Star from './modals/Win1Star.react.js';
 import Win2Star from './modals/Win2Star.react.js';
 
 import Bonus0Star from './modals/Bonus0Star.react';
-import Bonus1Star from './modals/Bonus2Star.react';
+import Bonus1Star from './modals/Bonus1Star.react';
 import Bonus2Star  from './modals/Bonus2Star.react';
 
 export default React.createClass({
@@ -20,11 +20,11 @@ export default React.createClass({
 			case 'Win2Star':
 				return (<Win2Star />);
 			case 'Bonus0Star':
-				return (<Bonus0Star  />);
+				return (<Bonus0Star />);
 			case 'Bonus1Star':
-				return (<Bonus1Star  />);
+				return (<Bonus1Star />);
 			case 'Bonus2Star':
-				return (<Bonus2Star  />);
+				return (<Bonus2Star />);
 			default:
 				return (<div>error</div>)
 		}

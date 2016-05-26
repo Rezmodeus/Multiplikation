@@ -1,10 +1,10 @@
 import React from 'react';
 import immutable from 'immutable';
-import Actions from '../Actions';
-import UserNameInput from'./UserNameInput.react.js';
+import Actions from '../../Actions';
+import UserNameInput from'./../UserNameInput.react.js';
 import {Modal, Button} from 'react-bootstrap';
 import { connect } from 'react-redux';
-import LocalStorageFilter from '../LocalStorageFilter';
+import LocalStorageFilter from '../../LocalStorageFilter';
 
 const NameSelection = React.createClass({
 	getInitialState() {

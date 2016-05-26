@@ -31,7 +31,6 @@ export default function (state, action) {
 			const currentChallenge = state.get('currentChallenge');
 			const currentLevelType = currentChallenge.get('level');
 			const isBonusLevel = currentLevelType == 6 || currentLevelType == 7 || currentLevelType == 8;
-			console.log('bonus',isBonusLevel, currentLevelType )
 
 			if (answerOk) {
 				if (state.getIn(['level', 'currentStep']) < state.getIn(['level', 'problems']).size) {
@@ -49,9 +48,15 @@ export default function (state, action) {
 					if(currentStep >= (nrOfProblems/2)){
 						// 1 star
 						state = state.set('modalType', 'Bonus1Star');
+						const chStar = state.getIn(['challengeStars', state.get('currentChallengeName')]);
+						if (!chStar || chStar != 2) {
+							state = state.setIn(['challengeStars', state.get('currentChallengeName')], 1);
+						}
+						return state;
 					} else {
 						// 0 stars
 						state = state.set('modalType', 'Bonus0Star');
+						return state;
 					}
 				}
 			}

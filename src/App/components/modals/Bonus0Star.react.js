@@ -4,7 +4,7 @@ import Actions from '../../Actions';
 import {Modal, Button} from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-const Win1Star = React.createClass({
+const Bonus0Star = React.createClass({
 
 	backToStart(){
 		this.props.backToStart();
@@ -29,7 +29,7 @@ const Win1Star = React.createClass({
 
 					<Modal.Footer>
 						<h3>Får du hälften rätt får du 1 stjärna</h3>
-						<button className="standard-btn" onClick={this.backToStart}>Fortsätt</button>
+						<button className="standard-btn" onClick={this.backToStart}>Testa en annan</button>
 						<button className="standard-btn" onClick={this.restart}>Prova igen</button>
 					</Modal.Footer>
 				</Modal>
@@ -50,12 +50,12 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		backToStart: () => dispatch(Actions.backToStart()),
 		closeModal: () => dispatch(Actions.closeModal()),
-		restartChallenge: ()=>dispatch(Actions.restartChallenge())
+		restartChallenge: ()=> dispatch(Actions.restartChallenge())
 	}
 };
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Win1Star)
+)(Bonus0Star)
 

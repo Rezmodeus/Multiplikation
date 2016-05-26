@@ -67,11 +67,9 @@ export default React.createClass({
 		const name = container.get('name');
 		let nr = 0;
 		let nameIndex = 0;
-		console.log(1)
 		const challenges = container.get('challenges').map(ch => {
 			const challenge = this.props.challenges.get(ch);
-			console.log(challenge)
-			const stars = challenge.get('stars');
+			const stars = this.props.challengeStars.get(ch) || 0;
 			const disabled = this.props.stars < challenge.get('requiredStars');
 			const newFlag = !disabled && stars == 0;
 			let cls = newFlag ? 'standard-btn pulsating' : disabled ? 'standard-btn disabled' : 'standard-btn';
