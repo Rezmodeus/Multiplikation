@@ -194,6 +194,7 @@ h2 {
     color: yellow;
   }
 }
+
 .star-container {
   padding: 0;
   display: flex;
@@ -259,17 +260,20 @@ h2 {
   animation: @arguments;
 }
 
-//.pulsatingx {
-//  .keyframes(fade-in; { 0% {
-//    background-color: #749a02;
-//    -webkit-box-shadow: 0 0 9px #333;
-//  } 50% {
-//      background-color: #B2EBF2;
-//      -webkit-box-shadow: 0 0 18px #91bd09;
-//    } 100% {
-//        background-color: #749a02;
-//        -webkit-box-shadow: 0 0 9px #333;
-//      } });
-//  .animation(fade-in 1.2s linear infinite alternate)
-//}
+.credits {
+  line-height: 90%;
+  padding: 5px;
+  width: 170px;
+  height: 110px;
+  margin: 0 10px 10px 10px;
+  border-radius: 10px;
+  background-color: #00BCD4;
+  font-size: 15px;
+  color: #B2EBF2;
+}
 
+.barn {
+  position: absolute;
+  transform: translate3d(0, 0, 0);
+  transition: transform 400ms ease;
+}
