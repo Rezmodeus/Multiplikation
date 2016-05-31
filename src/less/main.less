@@ -3,22 +3,27 @@
 @answer-button-calc-size: @answer-button-margin + @answer-button-size;
 body {
   background-color: #0097A7;
-  //background-color: antiquewhite;
-  margin: 0;
   padding: 0;
 }
 
 .header {
+  position: fixed;
+  background-color: #0097A7;
   height: 50px;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 .app-container {
-  position: absolute;
+  margin: 0 auto;
+  position: relative;
+  max-width: 800px;
   top: 50px;
   left: 0;
   right: 0;
   bottom: 0;
-  overflow-y: scroll;
+  //overflow-y: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +38,7 @@ body {
 }
 
 .grid-container {
-  width: @answer-button-calc-size * 11;
+  max-width: @answer-button-calc-size * 11;
 }
 
 .grid-btn {
@@ -166,8 +171,9 @@ h2 {
   color: #ffffff;
   border-radius: 10px;
   background-color: #00BCD4;
-  padding: 2%;
+  padding: 15px;
   width: auto;
+  min-width: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -177,7 +183,7 @@ h2 {
 .challenge-container {
   position: relative;
   padding: 0;
-  width: 820px;
+  width: auto;
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
@@ -261,11 +267,15 @@ h2 {
 }
 
 .credits {
+  position: relative;
+  //margin-left: 40%;
+  //margin-top: 90%;
+  margin: 50px auto;
   line-height: 90%;
   padding: 5px;
   width: 170px;
   height: 110px;
-  margin: 0 10px 10px 10px;
+  text-align: center;
   border-radius: 10px;
   background-color: #00BCD4;
   font-size: 15px;

@@ -20,8 +20,8 @@ const App = React.createClass({
 			stepForward: this.props.stepForward,
 			resetChallenges: this.props.resetChallenges,
 			checkAnswer: this.props.checkAnswer,
-			level:this.props.level,
-			debug:this.props.debug
+			level: this.props.level,
+			debug: this.props.debug
 		};
 
 		return (
@@ -35,7 +35,7 @@ const App = React.createClass({
 					}
 				</div>
 				<Credits />
-				<ModalHandler modalType={this.props.modalType} closeModal={this.props.closeModal} />
+				<ModalHandler modalType={this.props.modalType} closeModal={this.props.closeModal}/>
 			</div>
 
 		);
