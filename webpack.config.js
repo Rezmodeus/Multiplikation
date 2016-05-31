@@ -1,5 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
 	devtool: 'eval',
@@ -14,7 +16,13 @@ module.exports = {
 		publicPath: '/static/'
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new HtmlWebpackPlugin({
+			template: __dirname + '/src/index.tmpl.html',
+			title: 'My App',
+			filename: 'index.html',
+			favicon:'favicon.ico'
+		})
 	],
 	module: {
 		loaders: [{
