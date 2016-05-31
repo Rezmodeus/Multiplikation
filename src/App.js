@@ -2,6 +2,7 @@ import React from 'react';
 import Start from './App/components/Start.react';
 import Game from './App/components/Game.react';
 import Header from './App/components/Header.react';
+import Credits from './App/components/Credits.react';
 import ModalHandler from './App/components/ModalHandler.react.js';
 import Actions from './App/Actions';
 import { connect } from 'react-redux';
@@ -33,6 +34,7 @@ const App = React.createClass({
 						<Game {...this.props}/>
 					}
 				</div>
+				<Credits />
 				<ModalHandler modalType={this.props.modalType} closeModal={this.props.closeModal} />
 			</div>
 
