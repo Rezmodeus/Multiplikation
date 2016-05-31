@@ -6,7 +6,6 @@ import Reducer from './Reducer';
 import LocalStorageFilter from './LocalStorageFilter';
 import LocalStorageMiddleware from './LocalStorageMiddleware';
 import ReducerLib from './ReducerLib';
-import createLogger from 'redux-logger';
 
 
 let state = INITIAL_STATE;
@@ -22,15 +21,26 @@ if (state.get('users').size == 0) {
 	state = state.set('modalType','NameSelection');
 }
 
-const logger = createLogger({
-	timestamp: true,
-	duration: true,
-	collapsed: true,
-	predicate: (getState, action) => true,
-	stateTransformer: (state) => state.toJS && state.toJS() || state
-});
+const middlewares = [ thunk ];
 
-const createStoreWithMiddleware = applyMiddleware(thunk, logger, LocalStorageMiddleware)(createStore);
+// do not run logger in production mode.
+
+if (process.env.NODE_ENV !== 'production') {
+	const createLogger = require('redux-logger');
+	const logger = createLogger({
+		timestamp: true,
+		duration: true,
+		collapsed: true,
+		predicate: (getState, action) => true,
+		stateTransformer: (state) => state.toJS && state.toJS() || state
+	});
+	middlewares.push(logger);
+}
+
+middlewares.push(LocalStorageMiddleware);
+
+
+const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
 export const Store = createStoreWithMiddleware(Reducer, state);
 
