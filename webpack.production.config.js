@@ -5,7 +5,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 // var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
-
 module.exports = {
 	devtool: 'cheap-module-source-map',
 
@@ -20,12 +19,15 @@ module.exports = {
 	plugins: [
 		new webpack.NoErrorsPlugin(),
 		new webpack.DefinePlugin({
-			'process.env': { 'NODE_ENV': JSON.stringify('production') }
+			'process.env': {'NODE_ENV': JSON.stringify('production')}
 		}),
 		new HtmlWebpackPlugin({
 			template: __dirname + '/src/index.tmpl.html',
-			favicon: __dirname + '/favicon.ico'
-
+			favicon: __dirname + '/favicon.ico',
+			googleAnalytics: {
+				trackingId: 'UA-78655336-1',
+				pageViewOnLoad: true
+			}
 		}),
 
 		// turns out copying of favicon is included in HtmlWebpackPlugin
