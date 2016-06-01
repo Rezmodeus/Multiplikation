@@ -23,11 +23,7 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: __dirname + '/src/index.tmpl.html',
-			favicon: __dirname + '/favicon.ico',
-			googleAnalytics: {
-				trackingId: 'UA-78655336-1',
-				pageViewOnLoad: true
-			}
+			favicon: __dirname + '/favicon.ico'
 		}),
 
 		// turns out copying of favicon is included in HtmlWebpackPlugin

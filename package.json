@@ -8,7 +8,7 @@
     "lint": "eslint src",
     "test": "./node_modules/mocha/bin/_mocha test/**/*-spec.js --compilers js:babel-register --plugins rewire -w",
     "build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress",
-    "deploy":"echo \"\n\n Sorry old chap, but deploy has not been implemented just yet.\n\n\" && exit 0"
+    "deploy": "echo \"\n\n Sorry old chap, but deploy has not been implemented just yet.\n\n\" && exit 0"
   },
   "repository": {
     "type": "git",
