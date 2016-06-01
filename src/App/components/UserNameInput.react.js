@@ -8,7 +8,7 @@ export default React.createClass({
 
 	onKeyUp(event){
 		let val = event.target.value;
-		val = val.replace(/[^a-zA-Z]/, '')
+		val = val.replace(/[^a-zA-Z]/, '').substring(0, 12);
 		this.refs.textArea.value = val;
 		this.props.setText(val);
 	},

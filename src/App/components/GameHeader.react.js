@@ -26,7 +26,7 @@ export default React.createClass({
 		return (
 			<div className="start-header">
 				<button className="standard-btn" onClick={()=>this.props.backToStart()}>Tillbaks</button>
-				<h2>{this.props.currentUser} {progress}</h2>
+				<h2 className="header-text">{this.props.currentUser} {progress}</h2>
 				<button className="standard-btn" onClick={()=>this.props.restartChallenge()}>Starta om</button>
 				{debugButtons}
 			</div>

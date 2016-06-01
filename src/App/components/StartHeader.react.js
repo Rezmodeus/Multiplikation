@@ -14,8 +14,8 @@ export default React.createClass({
 			) : null;
 		return (
 			<div className="start-header">
-				<h2>{this.props.stars} <Star filled={true}/></h2>
-				<h2>{this.props.currentUser}</h2>
+				<h2 className="header-star-text">{this.props.stars} <Star filled={true}/></h2>
+				<h2 className="header-text">{this.props.currentUser}</h2>
 				<button className="standard-btn" onClick={()=>this.props.setModal('NameSelection')}>Byt användare </button>
 				{debugButtons}
 			</div>
